@@ -1,0 +1,7 @@
+back_end_index:
+    path:     /index
+    defaults: { _controller: LayoutBundle:BackEnd:index }
+
+front_end_index:
+    path:     /frontend/index
+    defaults: { _controller: LayoutBundle:FrontEnd:index }

@@ -1,0 +1,3 @@
+entitas_kelamin:
+    resource: "@EntitasBundle/Resources/config/routing/foskelamin.yml"
+    prefix:   /kelamin

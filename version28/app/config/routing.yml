@@ -1,0 +1,25 @@
+entitas_bundle:
+    resource: "@EntitasBundle/Resources/config/routing.yml"
+    prefix:   /entitas
+
+front_end_bundle:
+    resource: "@FrontEndBundle/Resources/config/routing.yml"
+    prefix:   /
+
+back_end_bundle:
+    resource: "@BackEndBundle/Resources/config/routing.yml"
+    prefix:   /
+
+layout_bundle:
+    resource: "@LayoutBundle/Resources/config/routing.yml"
+    prefix:   /layout
+
+users_bundle:
+    resource: "@UsersBundle/Resources/config/routing.yml"
+    prefix:   /auth
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

@@ -1,0 +1,11 @@
+services:
+    layout.menu_builder:
+        class: LayoutBundle\Menu\BackEndMenuBuilder
+        arguments: ["@knp_menu.factory",'@doctrine.orm.entity_manager','@security.context']
+
+    layout.main_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@layout.menu_builder", createBackEndMenu]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: backmenu}

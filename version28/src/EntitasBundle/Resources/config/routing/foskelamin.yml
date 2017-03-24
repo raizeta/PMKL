@@ -1,0 +1,26 @@
+foskelamin_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:FosKelamin:index" }
+    methods:  GET
+
+foskelamin_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:FosKelamin:show" }
+    methods:  GET
+
+foskelamin_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:FosKelamin:new" }
+    methods:  [GET, POST]
+
+foskelamin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:FosKelamin:edit" }
+    methods:  [GET, POST]
+    options:
+            expose: true
+
+foskelamin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:FosKelamin:delete" }
+    methods:  DELETE
