@@ -1,0 +1,207 @@
+{% extends "LayoutBundle:FrontEnd:index.html.twig" %}
+
+{% block title %}FrontEndBundle:StrukturOrg:index{% endblock %}
+{% block slider %}
+{% endblock slider %}
+{% block content %}
+<section id="services" class="services service-section">
+  	<div class="container">
+	    <div class="row">
+
+  	<div id="myDiagramDiv" style="border: solid 0px black; min-height: 500px"></div>
+ 
+		</div>
+	</div>
+</section>
+{% endblock content %}
+
+{% block javascripts %}
+	{{parent()}}
+  <script>
+  $(document).ready(function()
+  { 
+      var jsonDatasales = $.ajax
+      ({
+            url: Routing.generate('fosstrukorg_indexjson'),
+            type: "GET",
+            dataType:"json",
+            async: false
+      }).responseText;
+
+      var myData = JSON.parse(jsonDatasales);
+      var $xxx = go.GraphObject.make;  // for conciseness in defining templates
+
+      myDiagram =
+        $xxx(go.Diagram, "myDiagramDiv", // must be the ID or reference to div
+          {
+            initialContentAlignment: go.Spot.Center,
+            maxSelectionCount: 1, // users can select only one part at a time
+            validCycle: go.Diagram.CycleDestinationTree, // make sure users can only create trees
+            "clickCreatingTool.archetypeNodeData": {}, // allow double-click in background to create a new node
+
+            layout:
+              $xxx(go.TreeLayout,
+                {
+                  treeStyle: go.TreeLayout.StyleLastParents,
+                  arrangement: go.TreeLayout.ArrangementHorizontal,
+                  // properties for most of the tree:
+                  angle: 90,
+                  layerSpacing: 35,
+                  // properties for the "last parents":
+                  alternateAngle: 90,
+                  alternateLayerSpacing: 35,
+                  alternateAlignment: go.TreeLayout.AlignmentBus,
+                  alternateNodeSpacing: 20
+                }),
+            "undoManager.isEnabled": true // enable undo & redo
+          });
+
+      var levelColors = ["#AC193D", "#2672EC", "#8C0095", "#5133AB",
+                         "#008299", "#D24726", "#008A00", "#094AB2"];
+
+      // override TreeLayout.commitNodes to also modify the background brush based on the tree depth level
+      myDiagram.layout.commitNodes = function() 
+      {
+        go.TreeLayout.prototype.commitNodes.call(myDiagram.layout);  // do the standard behavior
+        // then go through all of the vertexes and set their corresponding node's Shape.fill
+        // to a brush dependent on the TreeVertex.level value
+        myDiagram.layout.network.vertexes.each(function(v) 
+        {
+          if (v.node) 
+          {
+            var level = v.level % (levelColors.length);
+            var color = levelColors[level];
+            var shape = v.node.findObject("SHAPE");
+            if (shape) 
+              {
+                shape.fill = $xxx(go.Brush, "Linear", { 0: color, 1: go.Brush.lightenBy(color, 0.05), start: go.Spot.Left, end: go.Spot.Right });
+              }
+          }
+        });
+      };
+
+      // This function is used to find a suitable ID when modifying/creating nodes.
+      // We used the counter combined with findNodeDataForKey to ensure uniqueness.
+      function getNextKey() 
+      {
+        console.log("getNextKey");
+        var key = nodeIdCounter;
+        while (myDiagram.model.findNodeDataForKey(key) !== null) 
+        {
+          key = nodeIdCounter--;
+        }
+        return key;
+      }
+
+      var nodeIdCounter = -1; // use a sequence to guarantee key uniqueness as we add/remove/modify nodes
+
+    
+      // this is used to determine feedback during drags
+      function mayWorkFor(node1, node2) 
+      {
+        console.log("mayWorkFor");
+        if (!(node1 instanceof go.Node)) return false;  // must be a Node
+        if (node1 === node2) return false;  // cannot work for yourself
+        if (node2.isInTreeOf(node1)) return false;  // cannot work for someone who works for you
+        return true;
+      }
+
+      function textStyle() 
+      {
+        return { font: "9pt  Segoe UI,sans-serif", stroke: "white" };
+      }
+
+      // This converter is used by the Picture.
+      function findHeadShot(key) 
+      {
+        index = myData.findIndex(x => x.key == key);
+        var gambar = myData[index].gambar;
+        return "{{asset('bundles/adminlte/anggota_pic/')}}" + gambar + "{{('')}}";
+      }
+
+      // define the Node template
+      myDiagram.nodeTemplate =
+        $xxx(go.Node, "Auto",
+          
+          // for sorting, have the Node.text be the data.name
+          new go.Binding("text", "name"),
+          // bind the Part.layerName to control the Node's layer depending on whether it isSelected
+          new go.Binding("layerName", "isSelected", function(sel) { return sel ? "Foreground" : ""; }).ofObject(),
+          // define the node's outer shape
+          $xxx(go.Shape, "Rectangle",
+            {
+              name: "SHAPE", fill: "white", stroke: null,
+              // set the port properties:
+              portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer"
+            }),
+          $xxx(go.Panel, "Horizontal",
+            $xxx(go.Picture,
+              {
+                name: "Picture",
+                desiredSize: new go.Size(80, 80),
+                margin: new go.Margin(6, 8, 6, 10),
+              },
+              new go.Binding("source", "key", findHeadShot)),
+            // define the panel where the text will appear
+            $xxx(go.Panel, "Table",
+              {
+                maxSize: new go.Size(150, 999),
+                margin: new go.Margin(6, 10, 0, 3),
+                defaultAlignment: go.Spot.Left
+              },
+              $xxx(go.RowColumnDefinition, { column: 2, width: 4 }),
+              $xxx(go.TextBlock, textStyle(),  // the name
+                {
+                  row: 0, column: 0, columnSpan: 5,
+                  font: "12pt Segoe UI,sans-serif",
+                  editable: false, isMultiline: false,
+                  minSize: new go.Size(10, 16)
+                },
+                new go.Binding("text", "name").makeTwoWay()),
+              $xxx(go.TextBlock, "Jabatan: ", textStyle(),
+                { row: 1, column: 0 }),
+              $xxx(go.TextBlock, textStyle(),
+                {
+                  row: 1, column: 1, columnSpan: 4,
+                  editable: false, isMultiline: false,
+                  minSize: new go.Size(10, 14),
+                  margin: new go.Margin(0, 0, 0, 3)
+                },
+                new go.Binding("text", "title").makeTwoWay()),
+            )  // end Table Panel
+          ) // end Horizontal Panel
+        );  // end Node
+
+      //Disini Fungsi Untuk Menu Klik Kanan
+      myDiagram.nodeTemplate.contextMenu =
+        $xxx(go.Adornment, "Vertical",
+          $xxx("ContextMenuButton",
+            $xxx(go.TextBlock, "View Profile"),
+            {
+              click: function(e, obj) {
+                var node = obj.part.adornedPart;
+                if (node !== null) 
+                {
+                  var thisemp = node.data;
+                  var urlredirect = Routing.generate('fosstrukorg_index');
+                  window.open(urlredirect,'_blank');
+                }
+              }
+            }
+          )
+        );
+
+      // define the Link template
+      myDiagram.linkTemplate =
+        $xxx(go.Link, go.Link.Orthogonal,
+          { corner: 5, relinkableFrom: true, relinkableTo: true },
+          $xxx(go.Shape, { strokeWidth: 4, stroke: "#00a4a4" }));  // the link shape
+
+      var data = 
+      { "class": "go.TreeModel",
+        "nodeDataArray": myData
+      }
+      myDiagram.model = go.Model.fromJson(data);
+  });
+</script>
+{% endblock javascripts %}

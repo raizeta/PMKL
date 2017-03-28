@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fosprofile</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fosProfile.id }}</td>
+            </tr>
+            <tr>
+                <th>Namalengkap</th>
+                <td>{{ fosProfile.namaLengkap }}</td>
+            </tr>
+            <tr>
+                <th>Tempatlahir</th>
+                <td>{{ fosProfile.tempatLahir }}</td>
+            </tr>
+            <tr>
+                <th>Tanggallahir</th>
+                <td>{% if fosProfile.tanggalLahir %}{{ fosProfile.tanggalLahir|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Alamatsekarang</th>
+                <td>{{ fosProfile.alamatSekarang }}</td>
+            </tr>
+            <tr>
+                <th>Nomorhandphone</th>
+                <td>{{ fosProfile.nomorHandphone }}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{% if fosProfile.statusDisplay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if fosProfile.createAt %}{{ fosProfile.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if fosProfile.updateAt %}{{ fosProfile.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ fosProfile.imageName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fosprofile_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('fosprofile_edit', { 'id': fosProfile.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

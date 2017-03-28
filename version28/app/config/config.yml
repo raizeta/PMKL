@@ -7,6 +7,7 @@ imports:
     - { resource: "@BackEndBundle/Resources/config/services.yml" }
     - { resource: "@FrontEndBundle/Resources/config/services.yml" }
     - { resource: "@EntitasBundle/Resources/config/services.yml" }
+    - { resource: "@DocBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -150,11 +151,11 @@ knp_snappy:
 liip_imagine:
     filter_sets:
         cache: ~
-        my_thumb:
+        anggota_thumb:
             quality: 100
             filters:
-                thumbnail: { size: [110, 110], mode: outbound }
-        my_store:
+                thumbnail: { size: [50, 50], mode: outbound }
+        anggota_front:
             quality: 100
             filters:
                 thumbnail: { size: [240, 240], mode: outbound }
@@ -162,3 +163,11 @@ liip_imagine:
 
 vich_uploader:
     db_driver: orm
+    mappings:
+        product_image:
+            uri_prefix:         /adminlte/anggota_pic
+            upload_destination: %kernel.root_dir%/../web/bundles/adminlte/anggota_pic
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

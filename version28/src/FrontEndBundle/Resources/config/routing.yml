@@ -1,3 +1,23 @@
-front_end_homepage:
-    path:     /
-    defaults: { _controller: FrontEndBundle:Default:index }
+front_strukturorg:
+    path:     /strukturorg
+    defaults: { _controller: FrontEndBundle:StrukturOrg:index }
+
+front_anggota:
+    path:     /anggotaorg
+    defaults: { _controller: FrontEndBundle:Anggota:index }
+
+front_profileorg:
+    path:     /profileorg
+    defaults: { _controller: FrontEndBundle:ProfileOrg:index }
+
+front_keuanganorg:
+    path:     /keuanganorg
+    defaults: { _controller: FrontEndBundle:KeunganOrg:index }
+
+front_galleryorg:
+    path:     /galleryorg
+    defaults: { _controller: FrontEndBundle:Gallery:index }
+
+front_progkerjaorg:
+    path:     /progkerjaorg
+    defaults: { _controller: FrontEndBundle:ProgKerjaOrg:index }

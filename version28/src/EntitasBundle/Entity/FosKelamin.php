@@ -75,7 +75,7 @@ class FosKelamin
     {
         $this->createAt         = new \DateTime('now');
         $this->updateAt         = new \DateTime('now');
-        $this->products         = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->profiles         = new \Doctrine\Common\Collections\ArrayCollection();
         $this->statusDisplay    = true;
     }
 

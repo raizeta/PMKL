@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fosstrukorg</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fosStrukorg.id }}</td>
+            </tr>
+            <tr>
+                <th>Namajabatan</th>
+                <td>{{ fosStrukorg.namaJabatan }}</td>
+            </tr>
+            <tr>
+                <th>Iconpejabat</th>
+                <td>{{ fosStrukorg.iconPejabat }}</td>
+            </tr>
+            <tr>
+                <th>Namakegiatan</th>
+                <td>{{ fosStrukorg.namaKegiatan }}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if fosStrukorg.createAt %}{{ fosStrukorg.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if fosStrukorg.updateAt %}{{ fosStrukorg.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fosstrukorg_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('fosstrukorg_edit', { 'id': fosStrukorg.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

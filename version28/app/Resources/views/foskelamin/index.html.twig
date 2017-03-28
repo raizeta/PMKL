@@ -3,10 +3,33 @@
 {% block mainall %}
 <section class='col-lg-12 connectedSortable'>
     <div class="box">
-        <div class="box-header"><i class="fa fa-map-marker"></i>
-            <h3 class="box-title">
-                List  Foskelamins
-            </h3>
+        <div class="box-header">
+          <div class="pull-right box-tools">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-primary">Export To</button>
+              <button type="button" class="btn btn-sm btn-primary  dropdown-toggle" data-toggle="dropdown" style="margin-right: 5px;">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="{{url('kelamin_pdf')}}" target="_blank">
+                    <i class="fa fa-circle-o"></i>PDF
+                  </a>
+                </li>
+                <li>
+                  <a href="{{url('kelamin_xls')}}" target="_blank">
+                    <i class="fa fa-circle-o"></i> XLS
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <i class="fa fa-map-marker"></i>
+          <h3 class="box-title">
+            List Product
+          </h3>
         </div>
         <div class="box-body">
             <a data-toggle="modal" id="myModalTrigger" class="btn btn-success">

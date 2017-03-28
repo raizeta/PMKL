@@ -1,0 +1,7 @@
+kelamin_pdf:
+    path:     /kelamin/pdf
+    defaults: { _controller: DocBundle:FosKelamin:pdf }
+
+kelamin_xls:
+    path:     /kelamin/xls
+    defaults: { _controller: DocBundle:FosKelamin:xls }

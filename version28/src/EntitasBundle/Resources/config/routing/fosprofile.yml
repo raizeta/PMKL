@@ -1,0 +1,24 @@
+fosprofile_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:FosProfile:index" }
+    methods:  GET
+
+fosprofile_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:FosProfile:show" }
+    methods:  GET
+
+fosprofile_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:FosProfile:new" }
+    methods:  [GET, POST]
+
+fosprofile_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:FosProfile:edit" }
+    methods:  [GET, POST]
+
+fosprofile_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:FosProfile:delete" }
+    methods:  DELETE

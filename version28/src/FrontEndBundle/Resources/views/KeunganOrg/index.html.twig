@@ -1,0 +1,144 @@
+{% extends "LayoutBundle:FrontEnd:index.html.twig" %}
+{% block slider %}
+{% endblock slider %}
+{% block content %}
+<section id="services" class="services service-section">
+  <div class="container">
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">Pemasukan Bulan Maret</div>
+          <div class="panel-body">
+            <div class="table-responsive">
+                {% if (fosKelamins|length != 0) %}
+                  {% set currentpage      = fosKelamins.currentPageNumber %}
+                  {% set itemperpage      = fosKelamins.getItemNumberPerPage %}
+                  {% set totalitem        = fosKelamins.getTotalItemCount %}
+                  {% set itemfirst        = fosKelamins.getPaginationData.firstItemNumber %}
+                  {% set itemlast         = fosKelamins.getPaginationData.lastItemNumber %}
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Namakelamin</th>
+                            <th>Statusdisplay</th>
+                            <th>Createat</th>
+                            <th>Createby</th>
+                            <th>Updateat</th>
+                            <th>Updateby</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    {% for fosKelamin in fosKelamins %}
+                        <tr>
+                            <td><a href="{{ path('foskelamin_show', { 'id': fosKelamin.id }) }}">{{ fosKelamin.id }}</a></td>
+                            <td>{{ fosKelamin.namaKelamin }}</td>
+                            <td>{% if fosKelamin.statusDisplay %}Yes{% else %}No{% endif %}</td>
+                            <td>{% if fosKelamin.createAt %}{{ fosKelamin.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ fosKelamin.createBy }}</td>
+                            <td>{% if fosKelamin.updateAt %}{{ fosKelamin.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ fosKelamin.updateBy }}</td>                        
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">Pengeluaran Bulan Maret</div>
+          <div class="panel-body">
+            <div class="table-responsive">
+                {% if (fosKelamins|length != 0) %}
+                  {% set currentpage      = fosKelamins.currentPageNumber %}
+                  {% set itemperpage      = fosKelamins.getItemNumberPerPage %}
+                  {% set totalitem        = fosKelamins.getTotalItemCount %}
+                  {% set itemfirst        = fosKelamins.getPaginationData.firstItemNumber %}
+                  {% set itemlast         = fosKelamins.getPaginationData.lastItemNumber %}
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Namakelamin</th>
+                            <th>Statusdisplay</th>
+                            <th>Createat</th>
+                            <th>Createby</th>
+                            <th>Updateat</th>
+                            <th>Updateby</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    {% for fosKelamin in fosKelamins %}
+                        <tr>
+                            <td><a href="{{ path('foskelamin_show', { 'id': fosKelamin.id }) }}">{{ fosKelamin.id }}</a></td>
+                            <td>{{ fosKelamin.namaKelamin }}</td>
+                            <td>{% if fosKelamin.statusDisplay %}Yes{% else %}No{% endif %}</td>
+                            <td>{% if fosKelamin.createAt %}{{ fosKelamin.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ fosKelamin.createBy }}</td>
+                            <td>{% if fosKelamin.updateAt %}{{ fosKelamin.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ fosKelamin.updateBy }}</td>                        
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">Neraca Bulan Maret</div>
+          <div class="panel-body">
+            <div class="table-responsive">
+                {% if (fosKelamins|length != 0) %}
+                  {% set currentpage      = fosKelamins.currentPageNumber %}
+                  {% set itemperpage      = fosKelamins.getItemNumberPerPage %}
+                  {% set totalitem        = fosKelamins.getTotalItemCount %}
+                  {% set itemfirst        = fosKelamins.getPaginationData.firstItemNumber %}
+                  {% set itemlast         = fosKelamins.getPaginationData.lastItemNumber %}
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Namakelamin</th>
+                            <th>Statusdisplay</th>
+                            <th>Createat</th>
+                            <th>Createby</th>
+                            <th>Updateat</th>
+                            <th>Updateby</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    {% for fosKelamin in fosKelamins %}
+                        <tr>
+                            <td><a href="{{ path('foskelamin_show', { 'id': fosKelamin.id }) }}">{{ fosKelamin.id }}</a></td>
+                            <td>{{ fosKelamin.namaKelamin }}</td>
+                            <td>{% if fosKelamin.statusDisplay %}Yes{% else %}No{% endif %}</td>
+                            <td>{% if fosKelamin.createAt %}{{ fosKelamin.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ fosKelamin.createBy }}</td>
+                            <td>{% if fosKelamin.updateAt %}{{ fosKelamin.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ fosKelamin.updateBy }}</td>                        
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  </div>
+</section>
+{% endblock content %}

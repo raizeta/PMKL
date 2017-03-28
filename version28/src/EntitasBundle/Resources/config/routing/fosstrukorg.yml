@@ -1,0 +1,33 @@
+fosstrukorg_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:FosStrukorg:index" }
+    methods:  GET
+    options:
+            expose: true
+
+fosstrukorg_indexjson:
+    path:     /json
+    defaults: { _controller: "EntitasBundle:FosStrukorg:indexJson" }
+    methods:  GET
+    options:
+            expose: true
+
+fosstrukorg_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:FosStrukorg:show" }
+    methods:  GET
+
+fosstrukorg_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:FosStrukorg:new" }
+    methods:  [GET, POST]
+
+fosstrukorg_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:FosStrukorg:edit" }
+    methods:  [GET, POST]
+
+fosstrukorg_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:FosStrukorg:delete" }
+    methods:  DELETE

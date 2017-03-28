@@ -1,3 +1,10 @@
 entitas_kelamin:
     resource: "@EntitasBundle/Resources/config/routing/foskelamin.yml"
     prefix:   /kelamin
+entitas_profile:
+    resource: "@EntitasBundle/Resources/config/routing/fosprofile.yml"
+    prefix:   /profile
+
+entitas_strukorg:
+    resource: "@EntitasBundle/Resources/config/routing/fosstrukorg.yml"
+    prefix:   /strukorg

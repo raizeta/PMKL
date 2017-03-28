@@ -1,3 +1,7 @@
+doc_bundle:
+    resource: "@DocBundle/Resources/config/routing.yml"
+    prefix:   /doc
+
 entitas_bundle:
     resource: "@EntitasBundle/Resources/config/routing.yml"
     prefix:   /entitas

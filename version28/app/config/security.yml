@@ -33,11 +33,11 @@ security:
                 login_path: /auth/login
                 check_path: /auth/login_check
                 use_referer: true
-                default_target_path: /admin/dashboard/master
+                default_target_path: /entitas/kelamin/
 
             logout:    
                 path:           /auth/logout
-                target:         /
+                target:         /auth/login
                 
             anonymous:    true
 

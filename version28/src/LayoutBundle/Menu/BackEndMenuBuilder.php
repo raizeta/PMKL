@@ -28,8 +28,16 @@ class BackEndMenuBuilder
 
         $menu->setChildrenAttribute('class', 'sidebar-menu');
         
-        $menu->addChild('Front End',array('route'=>'foskelamin_index'))
-             ->setAttribute('icon','fa fa-umbrella');
+        $menu->addChild('Front End',array('label'=>'Front End'))
+             ->setAttribute('dropdown',true)
+             ->setAttribute('icon','fa fa-umbrella')
+             ->setAttribute('class','treeview');
+
+        $menu['Front End']->addChild('Logo',array('route'=>'foskelamin_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+        $menu['Front End']->addChild('Carousel',array('route'=>'foskelamin_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+
 
         $menu->addChild('Keanggotaan',array('label'=>'Keanggotaan'))
              ->setAttribute('dropdown',true)
