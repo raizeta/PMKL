@@ -21,3 +21,7 @@ front_galleryorg:
 front_progkerjaorg:
     path:     /progkerjaorg
     defaults: { _controller: FrontEndBundle:ProgKerjaOrg:index }
+
+index:
+    path:     /logoorg
+    defaults: { _controller: FrontEndBundle:LogoOrg:index }

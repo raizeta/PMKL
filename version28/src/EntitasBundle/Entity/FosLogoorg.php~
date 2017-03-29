@@ -1,0 +1,79 @@
+<?php
+
+namespace EntitasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+/**
+ * FosLogoorg
+ *
+ * @ORM\Table(name="fos_logoorg")
+ * @ORM\Entity
+ * @Vich\Uploadable
+ */
+class FosLogoorg
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nama_logo", type="string", length=255, nullable=false)
+     */
+    private $namaLogo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deskripsi_logo", type="text", length=65535, nullable=false)
+     */
+    private $deskripsiLogo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_at", type="datetime", nullable=false)
+     */
+    private $createAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="update_at", type="datetime", nullable=false)
+     */
+    private $updateAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_name", type="string", length=255, nullable=false)
+     */
+    private $imageName;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="logoorg_image", fileNameProperty="imageName")
+     * 
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="setlogo_default", type="boolean", nullable=false)
+     */
+    private $setlogoDefault;
+
+
+}
+

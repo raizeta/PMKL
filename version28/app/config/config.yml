@@ -160,13 +160,25 @@ liip_imagine:
             filters:
                 thumbnail: { size: [240, 240], mode: outbound }
                 background : { size : [242, 242], position : center, color : '#ffffff' }
+        logo_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [150, 150], mode: outbound }
+                background : { size : [152, 152], position : center, color : '#ffffff' }
 
 vich_uploader:
     db_driver: orm
     mappings:
         product_image:
             uri_prefix:         /adminlte/anggota_pic
-            upload_destination: %kernel.root_dir%/../web/bundles/adminlte/anggota_pic
+            upload_destination: %kernel.root_dir%/../web/adminlte/anggota_pic
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        logoorg_image:
+            uri_prefix:         /adminlte/logoorg_pic
+            upload_destination: %kernel.root_dir%/../web/adminlte/logoorg_pic
 
             inject_on_load:     false
             delete_on_update:   true

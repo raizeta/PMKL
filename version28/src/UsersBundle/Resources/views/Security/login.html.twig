@@ -11,8 +11,10 @@
                 <h1 class="text-center login-title">&nbsp;</h1>
                 <h1 class="text-center login-title">&nbsp;</h1>
                 <div class="account-wall">
-                    <img class="profile-img" src="{{asset('bundles/comprof/images/pmkl.png')}}"
-                        alt="">
+                	{% set imageName %}
+	                  {{ render(controller('FrontEndBundle:LogoOrg:index')) }}
+	              	{% endset %}
+                    <img class="profile-img" src="{{asset('adminlte/logoorg_pic/'~imageName|trim)}}" alt="">
                     {% if error %}
 					    <div class="text-center login-title">
 					    	{{ error.messageKey|trans(error.messageData, 'security') }}

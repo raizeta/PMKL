@@ -8,13 +8,13 @@
    {% for fosProfile in fosProfiles %}
    	<div class="col-md-3">
 		<div class="panel widget">
-		  	<div style="background-image: url('{{asset('bundles/comprof/images/images-background.jpg')}}')" class="panel-body text-center bg-center">
+		  	<div style="background-image: url('{{asset('comprof/images/images-background.jpg')}}')" class="panel-body text-center bg-center">
 		     <div class="row row-table">
 		        <div class="col-xs-12 text-white">
 		        	{% if fosProfile.imageName %}
 		        		<img src="{{('bundles/adminlte/anggota_pic/'~ fosProfile.imageName)| imagine_filter('anggota_front')}}" alt="" class="img-thumbnail img-circle thumb128">
 		        	{% else %}
-		           		<img src="{{asset('bundles/comprof/images/pmkl.png')}}" alt="Image" class="img-thumbnail img-circle thumb128">
+		           		<img src="{{asset('comprof/images/pmkl.png')}}" alt="Image" class="img-thumbnail img-circle thumb128">
 		       		{% endif %}
 		           <h5 style="color:#dadee2">{{ fosProfile.namaLengkap }}</h5>
 		        </div>
@@ -42,13 +42,13 @@
    {% for fosProfile in fosProfiles %}
    	<div class="col-md-3">
 		<div class="panel widget">
-		  	<div style="background-image: url('{{asset('bundles/comprof/images/images-background.jpg')}}')" class="panel-body text-center bg-center">
+		  	<div style="background-image: url('{{asset('comprof/images/images-background.jpg')}}')" class="panel-body text-center bg-center">
 		     <div class="row row-table">
 		        <div class="col-xs-12 text-white">
 		        	{% if fosProfile.imageName %}
 		        		<img src="{{('bundles/adminlte/anggota_pic/'~ fosProfile.imageName)| imagine_filter('anggota_front')}}" alt="" class="img-thumbnail img-circle thumb128">
 		        	{% else %}
-		           		<img src="{{asset('bundles/comprof/images/pmkl.png')}}" alt="Image" class="img-thumbnail img-circle thumb128">
+		           		<img src="{{asset('comprof/images/pmkl.png')}}" alt="Image" class="img-thumbnail img-circle thumb128">
 		       		{% endif %}
 		           <h5 style="color:#dadee2">{{ fosProfile.namaLengkap }}</h5>
 		        </div>

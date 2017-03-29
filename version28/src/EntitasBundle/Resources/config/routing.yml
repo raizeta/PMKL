@@ -8,3 +8,7 @@ entitas_profile:
 entitas_strukorg:
     resource: "@EntitasBundle/Resources/config/routing/fosstrukorg.yml"
     prefix:   /strukorg
+
+entitas_logoorg:
+    resource: "@EntitasBundle/Resources/config/routing/foslogoorg.yml"
+    prefix:   /logoorg

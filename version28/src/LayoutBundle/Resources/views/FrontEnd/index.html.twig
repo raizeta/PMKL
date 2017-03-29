@@ -12,18 +12,18 @@
 <meta name="author" content="webthemez">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}PMKL{% endblock %}</title>
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/flexslider.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/jquery.fancybox.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/main.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/responsive.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/font-icon.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/animate.min.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/custom-radumta.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/custom-cardanggota.css')}}">
-<link rel="stylesheet" href="{{asset('bundles/comprof/css/custom-footer.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('bundles/comprof/css/style4.css')}}" />
-<link rel="stylesheet" href="{{asset('bundles/adminlte/bootstrap/font-awesome/css/font-awesome.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/flexslider.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/jquery.fancybox.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/main.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/responsive.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/font-icon.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/animate.min.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/custom-radumta.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/custom-cardanggota.css')}}">
+<link rel="stylesheet" href="{{asset('comprof/css/custom-footer.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('comprof/css/style4.css')}}" />
+<link rel="stylesheet" href="{{asset('adminlte/bootstrap/font-awesome/css/font-awesome.css')}}">
 
 </head>
 
@@ -66,7 +66,7 @@
             <div class="item active slide1">
                 <div class="row"><div class="container">
                     <div class="col-md-3 text-right">
-                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="{{asset('bundles/comprof/images/icon1.png')}}">
+                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="{{asset('comprof/images/icon1.png')}}">
                     </div>
                     <div class="col-md-9 text-left">
                         <h4 data-animation="animated bounceInDown">
@@ -86,7 +86,7 @@
                         <h4 data-animation="animated bounceInUp">Create beautiful slideshows </h4>
                      </div>
                     <div class="col-md-5 text-right">
-                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="{{asset('bundles/comprof/images/icon2.png')}}">
+                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="{{asset('comprof/images/icon2.png')}}">
                     </div>
                 </div></div>
             </div>
@@ -98,7 +98,7 @@
                         <h4 data-animation="animated bounceInUp">Bootstrap Image Carousel Slider with Animate.css</h4>
                      </div>
                     <div class="col-md-5 text-right">
-                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="{{asset('bundles/comprof/images/icon3.png')}}">
+                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="{{asset('comprof/images/icon3.png')}}">
                     </div>     
                 </div></div>
             </div>     
@@ -124,8 +124,10 @@
       <div class="row">
           <div class="col-sm-3">
               {# <h2 class="logo"><a href="#"> LOGO </a></h2> #}
-              <img class="profile-img" src="{{asset('bundles/comprof/images/pmkl.png')}}"
-                  alt="">
+              {% set imageName %}
+                  {{ render(controller('FrontEndBundle:LogoOrg:index')) }}
+              {% endset %}
+              <img class="profile-img" src="{{asset('adminlte/logoorg_pic/'~imageName|trim)}}" alt="">
           </div>
           <div class="col-sm-2">
               <h5>Get started</h5>
@@ -169,15 +171,15 @@
 <!-- Footer section --> 
 {% block javascripts %}
   {# // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> #}
-  <script src="{{asset('bundles/comprof/js/jquery.min.js')}}"></script> 
-  <script src="{{asset('bundles/comprof/js/bootstrap.min.js')}}"></script> 
-  <script src="{{asset('bundles/comprof/js/jquery.flexslider-min.js')}}"></script> 
-  <script src="{{asset('bundles/comprof/js/jquery.fancybox.pack.js')}}"></script> 
-  <script src="{{asset('bundles/comprof/js/retina.min.js')}}"></script> 
-  <script src="{{asset('bundles/comprof/js/modernizr.js')}}"></script> 
-  <script src="{{asset('bundles/comprof/js/main.js')}}"></script> 
-  <script src="{{asset('bundles/comprof/js/jquery.contact.js')}}"></script>
-  <script src="{{asset('bundles/comprof/js/chartorganisasi.js')}}"></script>
+  <script src="{{asset('comprof/js/jquery.min.js')}}"></script> 
+  <script src="{{asset('comprof/js/bootstrap.min.js')}}"></script> 
+  <script src="{{asset('comprof/js/jquery.flexslider-min.js')}}"></script> 
+  <script src="{{asset('comprof/js/jquery.fancybox.pack.js')}}"></script> 
+  <script src="{{asset('comprof/js/retina.min.js')}}"></script> 
+  <script src="{{asset('comprof/js/modernizr.js')}}"></script> 
+  <script src="{{asset('comprof/js/main.js')}}"></script> 
+  <script src="{{asset('comprof/js/jquery.contact.js')}}"></script>
+  <script src="{{asset('comprof/js/chartorganisasi.js')}}"></script>
   <script src="{{asset('bundles/fosjsrouting/js/router.js')}}"></script>
   <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}">
   </script>

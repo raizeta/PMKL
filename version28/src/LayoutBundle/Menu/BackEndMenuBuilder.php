@@ -33,7 +33,7 @@ class BackEndMenuBuilder
              ->setAttribute('icon','fa fa-umbrella')
              ->setAttribute('class','treeview');
 
-        $menu['Front End']->addChild('Logo',array('route'=>'foskelamin_index'))
+        $menu['Front End']->addChild('Logo',array('route'=>'foslogoorg_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
         $menu['Front End']->addChild('Carousel',array('route'=>'foskelamin_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
