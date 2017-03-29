@@ -17,6 +17,8 @@ fosprofile_edit:
     path:     /{id}/edit
     defaults: { _controller: "EntitasBundle:FosProfile:edit" }
     methods:  [GET, POST]
+    options:
+            expose: true
 
 fosprofile_delete:
     path:     /{id}/delete

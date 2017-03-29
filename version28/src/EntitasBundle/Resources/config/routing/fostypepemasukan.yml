@@ -1,0 +1,26 @@
+fostypepemasukan_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:FosTypepemasukan:index" }
+    methods:  GET
+
+fostypepemasukan_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:FosTypepemasukan:show" }
+    methods:  GET
+
+fostypepemasukan_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:FosTypepemasukan:new" }
+    methods:  [GET, POST]
+
+fostypepemasukan_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:FosTypepemasukan:edit" }
+    methods:  [GET, POST]
+    options:
+            expose: true
+
+fostypepemasukan_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:FosTypepemasukan:delete" }
+    methods:  DELETE

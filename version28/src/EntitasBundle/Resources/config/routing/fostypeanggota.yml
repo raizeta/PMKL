@@ -1,0 +1,24 @@
+fostypeanggota_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:FosTypeanggota:index" }
+    methods:  GET
+
+fostypeanggota_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:FosTypeanggota:show" }
+    methods:  GET
+
+fostypeanggota_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:FosTypeanggota:new" }
+    methods:  [GET, POST]
+
+fostypeanggota_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:FosTypeanggota:edit" }
+    methods:  [GET, POST]
+
+fostypeanggota_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:FosTypeanggota:delete" }
+    methods:  DELETE

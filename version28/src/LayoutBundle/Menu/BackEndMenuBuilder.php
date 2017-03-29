@@ -28,30 +28,38 @@ class BackEndMenuBuilder
 
         $menu->setChildrenAttribute('class', 'sidebar-menu');
         
-        $menu->addChild('Front End',array('label'=>'Front End'))
+        $menu->addChild('Master Data',array('label'=>'Master Data'))
              ->setAttribute('dropdown',true)
              ->setAttribute('icon','fa fa-umbrella')
              ->setAttribute('class','treeview');
 
-        $menu['Front End']->addChild('Logo',array('route'=>'foslogoorg_index'))
+        $menu['Master Data']->addChild('Logo',array('route'=>'foslogoorg_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
-        $menu['Front End']->addChild('Carousel',array('route'=>'foskelamin_index'))
+        $menu['Master Data']->addChild('Kelamin',array('route'=>'foskelamin_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
-
-
-        $menu->addChild('Keanggotaan',array('label'=>'Keanggotaan'))
-             ->setAttribute('dropdown',true)
-             ->setAttribute('icon','fa fa-university')
-             ->setAttribute('class','treeview');
-
-        $menu['Keanggotaan']->addChild('Active',array('route'=>'foskelamin_index'))
+        $menu['Master Data']->addChild('Anggota',array('route'=>'fosprofile_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();  
+        $menu['Master Data']->addChild('Struktur',array('route'=>'fosstrukorg_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
-
-        $menu['Keanggotaan']->addChild('Non-Active',array('route'=>'foskelamin_index'))
+        $menu['Master Data']->addChild('Type Anggota',array('route'=>'fostypeanggota_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();            
+        $menu['Master Data']->addChild('Type Pemasukan',array('route'=>'fostypepemasukan_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
-
-        $menu['Keanggotaan']->addChild('Alumni',array('route'=>'foskelamin_index'))
+        $menu['Master Data']->addChild('Type Pengeluaran',array('route'=>'fostypepengeluaran_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+        // $menu->addChild('Keanggotaan',array('label'=>'Keanggotaan'))
+        //      ->setAttribute('dropdown',true)
+        //      ->setAttribute('icon','fa fa-university')
+        //      ->setAttribute('class','treeview');
+
+        // $menu['Keanggotaan']->addChild('Active',array('route'=>'foskelamin_index'))
+        //                ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+
+        // $menu['Keanggotaan']->addChild('Non-Active',array('route'=>'foskelamin_index'))
+        //                ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+
+        // $menu['Keanggotaan']->addChild('Alumni',array('route'=>'foskelamin_index'))
+        //                ->setAttribute('icon', 'fa fa-circle-o')->getParent();
 
         $menu->addChild('Keuangan',array('label'=>'Keuangan'))
              ->setAttribute('dropdown',true)
