@@ -8,9 +8,10 @@ class ProfileOrgController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('FrontEndBundle:ProfileOrg:index.html.twig', array(
-            // ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('EntitasBundle:FosProfileorg')->findAll();
+        return $this->render('FrontEndBundle:ProfileOrg:index.html.twig', 
+        	array('entities'=>$entities));
     }
 
 }

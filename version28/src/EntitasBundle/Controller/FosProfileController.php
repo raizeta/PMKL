@@ -21,7 +21,7 @@ class FosProfileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('EntitasBundle:FosProfile')->findAll();
         $paginator  = $this->get('knp_paginator');
-        $fosProfiles = $paginator->paginate($query,$request->query->getInt('page', 1),5);
+        $fosProfiles = $paginator->paginate($query,$request->query->getInt('page', 1),50);
 
         $entity = new FosProfile();
         $form = $this->createForm('EntitasBundle\Form\FosProfileType', $entity, array(

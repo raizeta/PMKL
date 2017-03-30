@@ -25,10 +25,9 @@
                     <tr>
                         <th>Id</th>
                         <th>Nama Pejabat</th>
-                        <th>Namajabatan</th>
-                        <th>Bawahan Dari</th>
-                        <th>Iconpejabat</th>
-                        <th>Namakegiatan</th>
+                        <th>Jabatan</th>
+                        <th>Atasan</th>
+                        <th>Nama Kegiatan</th>
                         <th colspan="3">Actions</th>
                     </tr>
                 </thead>
@@ -42,16 +41,28 @@
                           </a>
                         </td>
                         <td>{{ fosStrukorg.getPjJabatan().namaLengkap }}</td>
-                        <td>{{ fosStrukorg.namaJabatan }}</td>
+
+                        <td>{{ fosStrukorg.getTypeJabatans().namaType }}</td>
                         <td>
-                          {% if (fosStrukorg.getParentJabatan()) %}
-                            {{ fosStrukorg.getParentJabatan().namaJabatan }}
-                          {% else %}
-                            ROOT
+                          {% if fosStrukorg.getParentTypejabatan() %}
+                           {{ fosStrukorg.getParentTypejabatan().namaJabatan }}
+                         {% else %}
+                            NULL
                           {% endif %}
                         </td>
-                        <td>{{ fosStrukorg.iconPejabat }}</td>
+                        {# <td>
+                          {% if fosStrukorg.getParentTypejabatan() %}
+                            {% if fosStrukorg.isAssistant %}
+                             {{'TRUE'|upper}}
+                            {% else %}
+                              {{'FALSE'|upper}}
+                            {% endif %}
+                          {% else %}
+                            {{'FALSE'|upper}}
+                          {% endif %}
+                        </td> #}
                         <td>{{ fosStrukorg.namaKegiatan }}</td>
+                                            
                         <td align="center">
                             <i class="fa fa-eye fa-2x"></i>
                         </td>

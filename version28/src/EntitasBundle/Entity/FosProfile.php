@@ -8,7 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * FosProfile
  *
- * @ORM\Table(name="fos_profile", indexes={@ORM\Index(name="jenis_kelamin", columns={"jenis_kelamin"})})
+ * @ORM\Table(name="fos_profile", indexes={@ORM\Index(name="jenis_kelamin", columns={"jenis_kelamin"}), @ORM\Index(name="type_anggotas", columns={"type_anggotas"})})
  * @ORM\Entity
  * @Vich\Uploadable
  */
@@ -111,6 +111,16 @@ class FosProfile
     protected $strukorgs;
 
     /**
+     * @var \FosTypeanggota
+     *
+     * @ORM\ManyToOne(targetEntity="FosTypeanggota",inversedBy="profiles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_anggotas", referencedColumnName="id")
+     * })
+     */
+    private $typeAnggotas;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -120,6 +130,7 @@ class FosProfile
         $this->statusDisplay    = true;
         $this->strukorgs        = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -322,31 +333,6 @@ class FosProfile
     {
         return $this->updateAt;
     }
-
-    /**
-     * Set jenisKelamin
-     *
-     * @param \EntitasBundle\Entity\FosKelamin $jenisKelamin
-     *
-     * @return FosProfile
-     */
-    public function setJenisKelamin(\EntitasBundle\Entity\FosKelamin $jenisKelamin = null)
-    {
-        $this->jenisKelamin = $jenisKelamin;
-
-        return $this;
-    }
-
-    /**
-     * Get jenisKelamin
-     *
-     * @return \EntitasBundle\Entity\FosKelamin
-     */
-    public function getJenisKelamin()
-    {
-        return $this->jenisKelamin;
-    }
-
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
@@ -382,7 +368,8 @@ class FosProfile
      * Set imageName
      *
      * @param string $imageName
-     * @return Product
+     *
+     * @return FosProfile
      */
     public function setImageName($imageName)
     {
@@ -394,11 +381,35 @@ class FosProfile
     /**
      * Get imageName
      *
-     * @return string 
+     * @return string
      */
     public function getImageName()
     {
         return $this->imageName;
+    }
+
+    /**
+     * Set jenisKelamin
+     *
+     * @param \EntitasBundle\Entity\FosKelamin $jenisKelamin
+     *
+     * @return FosProfile
+     */
+    public function setJenisKelamin(\EntitasBundle\Entity\FosKelamin $jenisKelamin = null)
+    {
+        $this->jenisKelamin = $jenisKelamin;
+
+        return $this;
+    }
+
+    /**
+     * Get jenisKelamin
+     *
+     * @return \EntitasBundle\Entity\FosKelamin
+     */
+    public function getJenisKelamin()
+    {
+        return $this->jenisKelamin;
     }
 
     /**
@@ -433,5 +444,29 @@ class FosProfile
     public function getStrukorgs()
     {
         return $this->strukorgs;
+    }
+
+    /**
+     * Set typeAnggotas
+     *
+     * @param \EntitasBundle\Entity\FosTypeanggota $typeAnggotas
+     *
+     * @return FosProfile
+     */
+    public function setTypeAnggotas(\EntitasBundle\Entity\FosTypeanggota $typeAnggotas = null)
+    {
+        $this->typeAnggotas = $typeAnggotas;
+
+        return $this;
+    }
+
+    /**
+     * Get typeAnggotas
+     *
+     * @return \EntitasBundle\Entity\FosTypeanggota
+     */
+    public function getTypeAnggotas()
+    {
+        return $this->typeAnggotas;
     }
 }

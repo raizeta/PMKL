@@ -18,7 +18,7 @@
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('{{ bundle }}:{{ entity }}')->findAll();
         $paginator  = $this->get('knp_paginator');
-        ${{ entity_pluralized }} = $paginator->paginate($query,$request->query->getInt('page', 1),5);
+        ${{ entity_pluralized }} = $paginator->paginate($query,$request->query->getInt('page', 1),50);
 
         $entity = new {{ entity }}();
         $form = $this->createForm('{{ namespace }}\Form\{{ entity }}Type', $entity, array(

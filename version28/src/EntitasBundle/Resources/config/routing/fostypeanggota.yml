@@ -17,7 +17,8 @@ fostypeanggota_edit:
     path:     /{id}/edit
     defaults: { _controller: "EntitasBundle:FosTypeanggota:edit" }
     methods:  [GET, POST]
-
+    options:
+            expose: true
 fostypeanggota_delete:
     path:     /{id}/delete
     defaults: { _controller: "EntitasBundle:FosTypeanggota:delete" }

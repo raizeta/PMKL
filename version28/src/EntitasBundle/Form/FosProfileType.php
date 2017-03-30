@@ -22,7 +22,8 @@ class FosProfileType extends AbstractType
         ->add('alamatSekarang',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Alamat Lengkap','required'=>true] ])
         ->add('nomorHandphone',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'No Handphone','required'=>true] ])
         ->add('statusDisplay')
-        ->add('imageFile', 'vich_file', array('required'=> false,'allow_delete'  => true, 'download_link' => true));
+        ->add('imageFile', 'vich_file', array('required'=> false,'allow_delete'  => true, 'download_link' => true))
+        ->add('typeAnggotas',null,['attr'=>['class'=>'form-control'],'property'=>'namaType','placeholder'=>'Jenis Kelamin','required'=>true]);
     }
     
     /**

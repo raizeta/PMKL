@@ -1,27 +1,31 @@
 front_strukturorg:
-    path:     /strukturorg
+    path:     /struktur-organisasi
     defaults: { _controller: FrontEndBundle:StrukturOrg:index }
 
 front_anggota:
-    path:     /anggotaorg
+    path:     /anggota-organisasi
     defaults: { _controller: FrontEndBundle:Anggota:index }
 
 front_profileorg:
-    path:     /profileorg
+    path:     /profile-organisasi
     defaults: { _controller: FrontEndBundle:ProfileOrg:index }
 
 front_keuanganorg:
-    path:     /keuanganorg
+    path:     /keuangan-organisasi
     defaults: { _controller: FrontEndBundle:KeunganOrg:index }
 
 front_galleryorg:
-    path:     /galleryorg
+    path:     /gallery-organisasi
     defaults: { _controller: FrontEndBundle:Gallery:index }
 
 front_progkerjaorg:
-    path:     /progkerjaorg
+    path:     /progkerja-organisasi
     defaults: { _controller: FrontEndBundle:ProgKerjaOrg:index }
 
-index:
-    path:     /logoorg
+front_logoorg:
+    path:     /logo-organisasi
     defaults: { _controller: FrontEndBundle:LogoOrg:index }
+
+front_forumorg:
+    path:     /forum-organisasi
+    defaults: { _controller: FrontEndBundle:ForumOrg:index }

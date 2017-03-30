@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new UsersBundle\UsersBundle(),
             new LayoutBundle\LayoutBundle(),
             new BackEndBundle\BackEndBundle(),

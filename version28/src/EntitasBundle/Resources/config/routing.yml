@@ -13,6 +13,10 @@ entitas_logoorg:
     resource: "@EntitasBundle/Resources/config/routing/foslogoorg.yml"
     prefix:   /logoorg
 
+entitas_profileorg:
+  resource: "@EntitasBundle/Resources/config/routing/fosprofileorg.yml"
+  prefix:   /profileorg
+
 entitas_typepemasukan:
     resource: "@EntitasBundle/Resources/config/routing/fostypepemasukan.yml"
     prefix:   /typepemasukan
@@ -24,3 +28,7 @@ entitas_typepengeluaran:
 entitas_typeanggota:
   resource: "@EntitasBundle/Resources/config/routing/fostypeanggota.yml"
   prefix:   /typeanggota
+
+entitas_typejabatan:
+  resource: "@EntitasBundle/Resources/config/routing/fostypejabatan.yml"
+  prefix:   /typejabatan

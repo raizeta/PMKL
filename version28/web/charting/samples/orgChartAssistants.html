@@ -336,27 +336,20 @@
           "comments": {},
           "isAssistant": { type: "boolean" }
         },
-        propertyModified: function(name, val) {
+        propertyModified: function(name, val) 
+        {
           if (name === "isAssistant") myDiagram.layout.invalidateLayout();
         }
       });
   }
 
-
-  // Assume that the SideTreeLayout determines whether a node is an "assistant" if a particular data property is true.
-  // You can adapt this code to decide according to your app's needs.
   function isAssistant(n) {
     if (n === null) return false;
     return n.data.isAssistant;
   }
 
-
-  // This is a custom TreeLayout that knows about "assistants".
-  // A Node for which isAssistant(n) is true will be placed at the side below the parent node
-  // but above all of the other child nodes.
-  // An assistant node may be the root of its own subtree.
-  // An assistant node may have its own assistant nodes.
-  function SideTreeLayout() {
+  function SideTreeLayout() 
+  {
     go.TreeLayout.call(this);
   }
   go.Diagram.inherit(SideTreeLayout, go.TreeLayout);

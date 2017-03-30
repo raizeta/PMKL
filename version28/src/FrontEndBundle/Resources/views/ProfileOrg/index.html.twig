@@ -5,42 +5,18 @@
 <section id="services" class="services service-section">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-sm-6 services text-center"> <span class="icon icon-strategy"></span>
+      {% for entity in entities %}
+      <div class="col-md-6 col-sm-6 services text-center"> 
+        <span class="{{entity.iconImage}}"></span>
         <div class="services-content">
-          <h5>Web Design</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu libero scelerisque ligula sagittis faucibus eget quis lacus.</p>
+          <h5>{{entity.judulContent|upper}}</h5>
+          <p align="justify">
+            {{entity.isiContent}}...<a href="">Read More</a>
+          </p>
+
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 services text-center"> <span class="icon icon-briefcase"></span>
-        <div class="services-content">
-          <h5>Web Development</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu libero scelerisque ligula sagittis faucibus eget quis lacus.</p>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 services text-center"> <span class="icon icon-tools"></span>
-        <div class="services-content">
-          <h5>User Experience</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu libero scelerisque ligula sagittis faucibus eget quis lacus.</p>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 services text-center"> <span class="icon icon-genius"></span>
-        <div class="services-content">
-          <h5>Quality</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu libero scelerisque ligula sagittis faucibus eget quis lacus.</p>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 services text-center"> <span class="icon icon-megaphone"></span>
-        <div class="services-content">
-          <h5>Mobility</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu libero scelerisque ligula sagittis faucibus eget quis lacus.</p>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 services text-center"> <span class="icon icon-trophy"></span>
-        <div class="services-content">
-          <h5>Cloud</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu libero scelerisque ligula sagittis faucibus eget quis lacus.</p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

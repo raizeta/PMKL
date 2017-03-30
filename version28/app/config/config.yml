@@ -183,3 +183,14 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+
+ivory_ck_editor:
+    configs:
+        my_config:
+            toolbar: full
+            forcePasteAsPlainText: true
+            uiColor: "#ffffff"
+    autoload: true
+    async: false
+    jquery: true
+    input_sync: true

@@ -21,7 +21,7 @@ class FosStrukorgController extends Controller
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('EntitasBundle:FosStrukorg')->findAll();
         $paginator  = $this->get('knp_paginator');
-        $fosStrukorgs = $paginator->paginate($query,$request->query->getInt('page', 1),5);
+        $fosStrukorgs = $paginator->paginate($query,$request->query->getInt('page', 1),50);
 
         $entity = new FosStrukorg();
         $form = $this->createForm('EntitasBundle\Form\FosStrukorgType', $entity, array(
@@ -40,14 +40,21 @@ class FosStrukorgController extends Controller
      */
     public function indexJsonAction(Request $request)
     {
-        
-            $em = $this->getDoctrine()->getManager();
-            $query = $em->getRepository('EntitasBundle:FosStrukorg')->findAllArray();
-            return new JsonResponse($query);
-        
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->getRepository('EntitasBundle:FosStrukorg')->findAllArray();
+        // foreach($entities as $categoryList)
+        // {
+        //     $data[] = array
+        //     (
+        //         'id' => $categoryList->getId(),
+        //         'slug' => $categoryList->getSlug(),
+        //         'createAt' => $categoryList->getCreateAt(),
+        //         'updateAt' => $categoryList->getUpdateAt()
+        //     );
+        // }
+        return new JsonResponse($query);
         
     }
-
     /**
      * Creates a new fosStrukorg entity.
      *
@@ -58,12 +65,16 @@ class FosStrukorgController extends Controller
         $form = $this->createForm('EntitasBundle\Form\FosStrukorgType', $fosStrukorg);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $data = $form->getData();
+            $nama = $data->getTypeJabatans()->getNamaType();
+            $fosStrukorg->setNamaJabatan($nama);
             $em = $this->getDoctrine()->getManager();
             $em->persist($fosStrukorg);
             $em->flush();
 
-            return $this->redirectToRoute('fosstrukorg_show', array('id' => $fosStrukorg->getId()));
+            return $this->redirectToRoute('fosstrukorg_index');
         }
 
         return $this->render('fosstrukorg/new.html.twig', array(

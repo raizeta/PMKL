@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fostypejabatan</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fosTypejabatan.id }}</td>
+            </tr>
+            <tr>
+                <th>Namatype</th>
+                <td>{{ fosTypejabatan.namaType }}</td>
+            </tr>
+            <tr>
+                <th>Deskripsitype</th>
+                <td>{{ fosTypejabatan.deskripsiType }}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{% if fosTypejabatan.statusDisplay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if fosTypejabatan.createAt %}{{ fosTypejabatan.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if fosTypejabatan.updateAt %}{{ fosTypejabatan.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fostypejabatan_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('fostypejabatan_edit', { 'id': fosTypejabatan.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

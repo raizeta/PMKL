@@ -1,0 +1,25 @@
+fostypejabatan_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:FosTypejabatan:index" }
+    methods:  GET
+
+fostypejabatan_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:FosTypejabatan:show" }
+    methods:  GET
+
+fostypejabatan_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:FosTypejabatan:new" }
+    methods:  [GET, POST]
+
+fostypejabatan_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:FosTypejabatan:edit" }
+    methods:  [GET, POST]
+    options:
+            expose: true
+fostypejabatan_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:FosTypejabatan:delete" }
+    methods:  DELETE

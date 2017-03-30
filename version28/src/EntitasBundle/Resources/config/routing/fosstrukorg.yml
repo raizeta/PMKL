@@ -2,8 +2,6 @@ fosstrukorg_index:
     path:     /
     defaults: { _controller: "EntitasBundle:FosStrukorg:index" }
     methods:  GET
-    options:
-            expose: true
 
 fosstrukorg_indexjson:
     path:     /json
@@ -26,7 +24,9 @@ fosstrukorg_edit:
     path:     /{id}/edit
     defaults: { _controller: "EntitasBundle:FosStrukorg:edit" }
     methods:  [GET, POST]
-
+    options:
+            expose: true
+            
 fosstrukorg_delete:
     path:     /{id}/delete
     defaults: { _controller: "EntitasBundle:FosStrukorg:delete" }

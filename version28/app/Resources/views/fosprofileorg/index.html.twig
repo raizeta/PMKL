@@ -1,0 +1,149 @@
+{% extends 'LayoutBundle:BackEnd:index.html.twig' %}
+
+{% block mainall %}
+<section class='col-lg-12 connectedSortable'>
+    <div class="box">
+        <div class="box-header"><i class="fa fa-map-marker"></i>
+            <h3 class="box-title">
+                List  Fosprofileorgs
+            </h3>
+        </div>
+        <div class="box-body">
+            <a data-toggle="modal" id="myModalTrigger" class="btn btn-success">
+              <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <div class="box-body table-responsive">
+            {% if (fosProfileorgs|length != 0) %}
+              {% set currentpage      = fosProfileorgs.currentPageNumber %}
+              {% set itemperpage      = fosProfileorgs.getItemNumberPerPage %}
+              {% set totalitem        = fosProfileorgs.getTotalItemCount %}
+              {% set itemfirst        = fosProfileorgs.getPaginationData.firstItemNumber %}
+              {% set itemlast         = fosProfileorgs.getPaginationData.lastItemNumber %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Judulcontent</th>
+                        <th>Slugcontent</th>
+                        <th>Summarycontent</th>
+                        <th>Isicontent</th>
+                        <th>Statusdisplay</th>
+                        <th>Createat</th>
+                        <th>Updateat</th>
+                        <th>Imagename</th>
+                        <th colspan="3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                {% for fosProfileorg in fosProfileorgs %}
+                    <tr>
+                        <td><a href="{{ path('fosprofileorg_show', { 'id': fosProfileorg.id }) }}">{{ fosProfileorg.id }}</a></td>
+                        <td>{{ fosProfileorg.judulContent }}</td>
+                        <td>{{ fosProfileorg.slugContent }}</td>
+                        <td>{{ fosProfileorg.summaryContent }}</td>
+                        <td>{{ fosProfileorg.isiContent }}</td>
+                        <td>{% if fosProfileorg.statusDisplay %}Yes{% else %}No{% endif %}</td>
+                        <td>{% if fosProfileorg.createAt %}{{ fosProfileorg.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if fosProfileorg.updateAt %}{{ fosProfileorg.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ fosProfileorg.imageName }}</td>                        <td align="center">
+                            <i class="fa fa-eye fa-2x"></i>
+                        </td>
+                        <td align="center">
+                            <a  href="javascript:;" data-id="{{fosProfileorg.id}}" class="editButton">
+                                <i class="fa fa-refresh fa-2x"></i>
+                            </a>
+                        </td>
+                        <td align="center">
+                            <i class="fa fa-trash-o fa-2x"></i>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+            {% endif %}
+            
+        </div>
+        <div class="box-footer clearfix">
+          {% if (fosProfileorgs|length != 0) %}
+            <ul class="pagination pagination-sm no-margin pull-left">
+              Show Item  {{itemfirst}}-{{itemlast}} From {{totalitem}}
+            </ul>
+            {{ knp_pagination_render(fosProfileorgs) }}
+          {% endif %}
+        </div>
+    </div>
+</section>
+<div id="myModalcreate" class="modal fade" role="dialog">
+    {{form_start(form, {'attr': {'id': 'newFosProfileorg'}})}}
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-light-blue">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">New FosProfileorg</h4>
+              </div>
+              <div class="modal-body">
+                {% for formx in form %}
+                <div class="form-group">
+                    {{form_widget(formx)}}
+                </div>
+                {% endfor %}
+              </div>
+              <div class="modal-footer bg-light-blue">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-success">Save</button>
+              </div>
+            </div>
+        </div>
+    {{form_end(form)}}
+</div>
+<div id="myModaledit" class="modal fade" role="dialog">
+  
+</div>
+{% endblock mainall %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script>
+      $('#myModalcreate').on('hidden.bs.modal', function () 
+      {
+          $(this).find('#newFosProfileorg').trigger('reset');
+      });
+
+      $('#myModalTrigger').click(function()
+      {
+          var options = {keyboard:true, backdrop:true, show:true};
+          $('#myModalcreate').modal(options);
+      });
+    </script>
+    <script>
+      $('#myModaledit').on('hidden.bs.modal', function () 
+      {
+          $(this).find('#editFosProfileorg').trigger('reset');
+      });
+
+      $('.editButton').on('click', function() 
+      {
+        $('#myModaledit').html('');
+        var options = {keyboard:false, backdrop:true, show:true};
+        $('#myModaledit').modal(options);
+
+        var id = $(this).attr('data-id');
+        var $url =  Routing.generate('fosprofileorg_edit',{id:id});
+        console.log($url);
+        $.ajax
+        ({
+            url: $url,
+            method: 'GET'
+        })
+        .success(function(response) 
+        {
+          $('#myModaledit').html(response);
+          var options = {keyboard:true, backdrop:true, show:true};
+          $('#myModaledit').modal(options);
+        });
+      });
+    </script>
+{% endblock javascripts %}

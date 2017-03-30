@@ -14,12 +14,11 @@ class FosStrukorgType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('namaJabatan',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Nama Jabatan','required'=>true] ])
-        ->add('iconPejabat',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Icon Jabatan','required'=>true] ])
         ->add('namaKegiatan',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Nama Kegiatan','required'=>true] ])
-        // ->add('parentJabatan')
-        ->add('parentJabatan',null,['attr'=>['class'=>'form-control'],'property'=>'namaJabatan','placeholder'=>'Atasan','required'=>true])
-        ->add('pjJabatan',null,['attr'=>['class'=>'form-control'],'property'=>'namaLengkap','placeholder'=>'Yang Menjabat','required'=>true]);
+        ->add('pjJabatan',null,['attr'=>['class'=>'form-control'],'property'=>'namaLengkap','placeholder'=>'Nama Pejabat','required'=>true])
+        ->add('typeJabatans',null,['attr'=>['class'=>'form-control'],'property'=>'namaType','placeholder'=>'Type Jabatan','required'=>true])
+        ->add('parentTypejabatan',null,['attr'=>['class'=>'form-control'],'property'=>'namaJabatan','placeholder'=>'Atasan Jabatan']);
+        
     }
     
     /**

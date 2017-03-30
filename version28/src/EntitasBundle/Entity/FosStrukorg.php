@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * FosStrukorg
  *
- * @ORM\Table(name="fos_strukorg", indexes={@ORM\Index(name="parent_jabatan", columns={"parent_jabatan"}), @ORM\Index(name="pj_jabatan", columns={"pj_jabatan"})})
+ * @ORM\Table(name="fos_strukorg", indexes={@ORM\Index(name="parent_jabatan", columns={"parent_typejabatan"}), @ORM\Index(name="pj_jabatan", columns={"pj_jabatan"}), @ORM\Index(name="type_jabatans", columns={"type_jabatans"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="EntitasBundle\Repositories\FosStrukorgRepository")
  */
@@ -25,9 +25,16 @@ class FosStrukorg
     /**
      * @var string
      *
-     * @ORM\Column(name="nama_jabatan", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nama_jabatan", type="string", length=255, nullable=true)
      */
     private $namaJabatan;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_assistant", type="boolean", nullable=true)
+     */
+    private $isAssistant;
 
     /**
      * @var string
@@ -62,14 +69,14 @@ class FosStrukorg
      *
      * @ORM\ManyToOne(targetEntity="FosStrukorg",inversedBy="childrens")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parent_jabatan", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="parent_typejabatan", referencedColumnName="id")
      * })
      */
-    private $parentJabatan;
+    private $parentTypejabatan;
 
     /**
-     * @var \FosStrukorg
-     * @ORM\OneToMany(targetEntity="FosStrukorg", mappedBy="parentJabatan")
+     * @var \MenuTree
+     * @ORM\OneToMany(targetEntity="FosStrukorg", mappedBy="parentTypejabatan")
      */
     private $childrens;
 
@@ -83,11 +90,27 @@ class FosStrukorg
      */
     private $pjJabatan;
 
-    public function __construct() 
+    /**
+     * @var \FosTypejabatan
+     *
+     * @ORM\ManyToOne(targetEntity="FosTypejabatan",inversedBy="strukorgs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_jabatans", referencedColumnName="id")
+     * })
+     */
+    private $typeJabatans;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        $this->childrens    = new \Doctrine\Common\Collections\ArrayCollection();;
-        $this->createAt     = new \Datetime('now');
-        $this->updateAt     = new \Datetime('now');
+        $this->createAt         = new \DateTime('now');
+        $this->updateAt         = new \DateTime('now');
+        $this->statusDisplay    = true;
+        $this->childrens        = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->isAssistant      = false;
+        $this->iconPejabat      = '<i class="fa fa-calendar></i>';
     }
 
 
@@ -123,6 +146,30 @@ class FosStrukorg
     public function getNamaJabatan()
     {
         return $this->namaJabatan;
+    }
+
+    /**
+     * Set isAssistant
+     *
+     * @param boolean $isAssistant
+     *
+     * @return FosStrukorg
+     */
+    public function setIsAssistant($isAssistant)
+    {
+        $this->isAssistant = $isAssistant;
+
+        return $this;
+    }
+
+    /**
+     * Get isAssistant
+     *
+     * @return boolean
+     */
+    public function getIsAssistant()
+    {
+        return $this->isAssistant;
     }
 
     /**
@@ -222,27 +269,27 @@ class FosStrukorg
     }
 
     /**
-     * Set parentJabatan
+     * Set parentTypejabatan
      *
-     * @param \EntitasBundle\Entity\FosStrukorg $parentJabatan
+     * @param \EntitasBundle\Entity\FosStrukorg $parentTypejabatan
      *
      * @return FosStrukorg
      */
-    public function setParentJabatan(\EntitasBundle\Entity\FosStrukorg $parentJabatan = null)
+    public function setParentTypejabatan(\EntitasBundle\Entity\FosStrukorg $parentTypejabatan = null)
     {
-        $this->parentJabatan = $parentJabatan;
+        $this->parentTypejabatan = $parentTypejabatan;
 
         return $this;
     }
 
     /**
-     * Get parentJabatan
+     * Get parentTypejabatan
      *
      * @return \EntitasBundle\Entity\FosStrukorg
      */
-    public function getParentJabatan()
+    public function getParentTypejabatan()
     {
-        return $this->parentJabatan;
+        return $this->parentTypejabatan;
     }
 
     /**
@@ -301,5 +348,29 @@ class FosStrukorg
     public function getPjJabatan()
     {
         return $this->pjJabatan;
+    }
+
+    /**
+     * Set typeJabatans
+     *
+     * @param \EntitasBundle\Entity\FosTypejabatan $typeJabatans
+     *
+     * @return FosStrukorg
+     */
+    public function setTypeJabatans(\EntitasBundle\Entity\FosTypejabatan $typeJabatans = null)
+    {
+        $this->typeJabatans = $typeJabatans;
+
+        return $this;
+    }
+
+    /**
+     * Get typeJabatans
+     *
+     * @return \EntitasBundle\Entity\FosTypejabatan
+     */
+    public function getTypeJabatans()
+    {
+        return $this->typeJabatans;
     }
 }

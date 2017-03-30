@@ -8,9 +8,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * FosProfile
  *
- * @ORM\Table(name="fos_profile", indexes={@ORM\Index(name="jenis_kelamin", columns={"jenis_kelamin"})})
+ * @ORM\Table(name="fos_profile", indexes={@ORM\Index(name="jenis_kelamin", columns={"jenis_kelamin"}), @ORM\Index(name="type_anggotas", columns={"type_anggotas"})})
  * @ORM\Entity
- * @Vich\Uploadable
  */
 class FosProfile
 {
@@ -111,6 +110,16 @@ class FosProfile
     protected $strukorgs;
 
     /**
+     * @var \FosTypeanggota
+     *
+     * @ORM\ManyToOne(targetEntity="FosTypeanggota",inversedBy="profiles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_anggotas", referencedColumnName="id")
+     * })
+     */
+    private $typeAnggotas;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -121,283 +130,5 @@ class FosProfile
         $this->strukorgs        = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set namaLengkap
-     *
-     * @param string $namaLengkap
-     *
-     * @return FosProfile
-     */
-    public function setNamaLengkap($namaLengkap)
-    {
-        $this->namaLengkap = $namaLengkap;
-
-        return $this;
-    }
-
-    /**
-     * Get namaLengkap
-     *
-     * @return string
-     */
-    public function getNamaLengkap()
-    {
-        return $this->namaLengkap;
-    }
-
-    /**
-     * Set tempatLahir
-     *
-     * @param string $tempatLahir
-     *
-     * @return FosProfile
-     */
-    public function setTempatLahir($tempatLahir)
-    {
-        $this->tempatLahir = $tempatLahir;
-
-        return $this;
-    }
-
-    /**
-     * Get tempatLahir
-     *
-     * @return string
-     */
-    public function getTempatLahir()
-    {
-        return $this->tempatLahir;
-    }
-
-    /**
-     * Set tanggalLahir
-     *
-     * @param \DateTime $tanggalLahir
-     *
-     * @return FosProfile
-     */
-    public function setTanggalLahir($tanggalLahir)
-    {
-        $this->tanggalLahir = $tanggalLahir;
-
-        return $this;
-    }
-
-    /**
-     * Get tanggalLahir
-     *
-     * @return \DateTime
-     */
-    public function getTanggalLahir()
-    {
-        return $this->tanggalLahir;
-    }
-
-    /**
-     * Set alamatSekarang
-     *
-     * @param string $alamatSekarang
-     *
-     * @return FosProfile
-     */
-    public function setAlamatSekarang($alamatSekarang)
-    {
-        $this->alamatSekarang = $alamatSekarang;
-
-        return $this;
-    }
-
-    /**
-     * Get alamatSekarang
-     *
-     * @return string
-     */
-    public function getAlamatSekarang()
-    {
-        return $this->alamatSekarang;
-    }
-
-    /**
-     * Set nomorHandphone
-     *
-     * @param string $nomorHandphone
-     *
-     * @return FosProfile
-     */
-    public function setNomorHandphone($nomorHandphone)
-    {
-        $this->nomorHandphone = $nomorHandphone;
-
-        return $this;
-    }
-
-    /**
-     * Get nomorHandphone
-     *
-     * @return string
-     */
-    public function getNomorHandphone()
-    {
-        return $this->nomorHandphone;
-    }
-
-    /**
-     * Set statusDisplay
-     *
-     * @param boolean $statusDisplay
-     *
-     * @return FosProfile
-     */
-    public function setStatusDisplay($statusDisplay)
-    {
-        $this->statusDisplay = $statusDisplay;
-
-        return $this;
-    }
-
-    /**
-     * Get statusDisplay
-     *
-     * @return boolean
-     */
-    public function getStatusDisplay()
-    {
-        return $this->statusDisplay;
-    }
-
-    /**
-     * Set createAt
-     *
-     * @param \DateTime $createAt
-     *
-     * @return FosProfile
-     */
-    public function setCreateAt($createAt)
-    {
-        $this->createAt = $createAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createAt
-     *
-     * @return \DateTime
-     */
-    public function getCreateAt()
-    {
-        return $this->createAt;
-    }
-
-    /**
-     * Set updateAt
-     *
-     * @param \DateTime $updateAt
-     *
-     * @return FosProfile
-     */
-    public function setUpdateAt($updateAt)
-    {
-        $this->updateAt = $updateAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updateAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdateAt()
-    {
-        return $this->updateAt;
-    }
-
-    /**
-     * Set jenisKelamin
-     *
-     * @param \EntitasBundle\Entity\FosKelamin $jenisKelamin
-     *
-     * @return FosProfile
-     */
-    public function setJenisKelamin(\EntitasBundle\Entity\FosKelamin $jenisKelamin = null)
-    {
-        $this->jenisKelamin = $jenisKelamin;
-
-        return $this;
-    }
-
-    /**
-     * Get jenisKelamin
-     *
-     * @return \EntitasBundle\Entity\FosKelamin
-     */
-    public function getJenisKelamin()
-    {
-        return $this->jenisKelamin;
-    }
-
-    /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return FosProfile
-     */
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updateAt = new \DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-    */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-    /**
-     * Set imageName
-     *
-     * @param string $imageName
-     * @return Product
-     */
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * Get imageName
-     *
-     * @return string 
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
 }
+

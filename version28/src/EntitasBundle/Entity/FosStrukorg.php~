@@ -1,0 +1,115 @@
+<?php
+
+namespace EntitasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * FosStrukorg
+ *
+ * @ORM\Table(name="fos_strukorg", indexes={@ORM\Index(name="parent_jabatan", columns={"parent_typejabatan"}), @ORM\Index(name="pj_jabatan", columns={"pj_jabatan"}), @ORM\Index(name="type_jabatans", columns={"type_jabatans"})})
+ * @ORM\Entity
+ */
+class FosStrukorg
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nama_jabatan", type="string", length=255, nullable=true)
+     */
+    private $namaJabatan;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_assistant", type="boolean", nullable=true)
+     */
+    private $isAssistant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icon_pejabat", type="string", length=50, nullable=false)
+     */
+    private $iconPejabat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nama_kegiatan", type="string", length=255, nullable=false)
+     */
+    private $namaKegiatan;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_at", type="datetime", nullable=false)
+     */
+    private $createAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="update_at", type="datetime", nullable=false)
+     */
+    private $updateAt;
+
+    /**
+     * @var \FosStrukorg
+     *
+     * @ORM\ManyToOne(targetEntity="FosStrukorg")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="parent_typejabatan", referencedColumnName="id")
+     * })
+     */
+    private $parentTypejabatan;
+
+    /**
+     * @var \MenuTree
+     * @ORM\OneToMany(targetEntity="FosStrukorg", mappedBy="parentTypejabatan")
+     */
+    private $childrens;
+
+    /**
+     * @var \FosProfile
+     *
+     * @ORM\ManyToOne(targetEntity="FosProfile")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pj_jabatan", referencedColumnName="id")
+     * })
+     */
+    private $pjJabatan;
+
+    /**
+     * @var \FosTypejabatan
+     *
+     * @ORM\ManyToOne(targetEntity="FosTypejabatan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_jabatans", referencedColumnName="id")
+     * })
+     */
+    private $typeJabatans;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createAt         = new \DateTime('now');
+        $this->updateAt         = new \DateTime('now');
+        $this->statusDisplay    = true;
+        $this->childrens        = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->isAssistant      = false;
+    }
+
+}
+

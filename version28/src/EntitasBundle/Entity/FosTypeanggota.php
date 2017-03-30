@@ -57,6 +57,11 @@ class FosTypeanggota
     private $updateAt;
 
     /**
+     * @ORM\OneToMany(targetEntity="FosProfile", mappedBy="type_anggotas")
+     */
+    protected $profiles;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -64,6 +69,7 @@ class FosTypeanggota
         $this->createAt         = new \DateTime('now');
         $this->updateAt         = new \DateTime('now');
         $this->statusDisplay    = true;
+        $this->profiles         = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -194,5 +200,39 @@ class FosTypeanggota
     public function getUpdateAt()
     {
         return $this->updateAt;
+    }
+
+    /**
+     * Add profile
+     *
+     * @param \EntitasBundle\Entity\FosProfile $profile
+     *
+     * @return FosTypeanggota
+     */
+    public function addProfile(\EntitasBundle\Entity\FosProfile $profile)
+    {
+        $this->profiles[] = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Remove profile
+     *
+     * @param \EntitasBundle\Entity\FosProfile $profile
+     */
+    public function removeProfile(\EntitasBundle\Entity\FosProfile $profile)
+    {
+        $this->profiles->removeElement($profile);
+    }
+
+    /**
+     * Get profiles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProfiles()
+    {
+        return $this->profiles;
     }
 }
