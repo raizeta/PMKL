@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fosslider</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fosSlider.id }}</td>
+            </tr>
+            <tr>
+                <th>Judul</th>
+                <td>{{ fosSlider.judul }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ fosSlider.slug }}</td>
+            </tr>
+            <tr>
+                <th>Summaryslider</th>
+                <td>{{ fosSlider.summarySlider }}</td>
+            </tr>
+            <tr>
+                <th>Contentslider</th>
+                <td>{{ fosSlider.contentSlider }}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ fosSlider.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{% if fosSlider.statusDisplay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if fosSlider.createAt %}{{ fosSlider.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if fosSlider.updateAt %}{{ fosSlider.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fosslider_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('fosslider_edit', { 'id': fosSlider.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

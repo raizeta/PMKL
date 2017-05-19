@@ -1,14 +1,29 @@
 front_strukturorg:
-    path:     /struktur-organisasi
+    path:     /struktur-organisasi/{slug}
     defaults: { _controller: FrontEndBundle:StrukturOrg:index }
 
 front_anggota:
     path:     /anggota-organisasi
     defaults: { _controller: FrontEndBundle:Anggota:index }
 
+front_anggota_slug:
+    path:     /anggota-organisasi/{slug}
+    defaults: { _controller: FrontEndBundle:Anggota:FindBySlug }
+
+front_anggota_profile:
+    path:     /anggota/{slug}
+    defaults: { _controller: FrontEndBundle:Anggota:profile }
+    options:
+        expose: true
+
 front_profileorg:
     path:     /profile-organisasi
     defaults: { _controller: FrontEndBundle:ProfileOrg:index }
+
+front_profileorg_slug:
+    path:     /profile-organisasi/{slug}
+    defaults: { _controller: FrontEndBundle:ProfileOrg:slug }
+
 
 front_keuanganorg:
     path:     /keuangan-organisasi
@@ -29,3 +44,24 @@ front_logoorg:
 front_forumorg:
     path:     /forum-organisasi
     defaults: { _controller: FrontEndBundle:ForumOrg:index }
+
+front_forumorg_slug:
+    path:     /forum-organisasi/{slug}
+    defaults: { _controller: FrontEndBundle:ForumOrg:slug }
+
+front_forumorg_detail:
+    path:     /forum/{slug}
+    defaults: { _controller: FrontEndBundle:ForumOrg:detail }
+
+front_komentar_new:
+    path:     /komentar/new
+    defaults: { _controller: "FrontEndBundle:ForumOrg:save" }
+    methods:  [POST]
+    
+front_pengumuman_org:
+    path:     /pengumuman-organisasi
+    defaults: { _controller: FrontEndBundle:PengumumanOrg:index }
+
+front_pengumuman_org_slug:
+    path:     /pengumuman-organisasi/{slug}
+    defaults: { _controller: FrontEndBundle:PengumumanOrg:slug }

@@ -1,0 +1,17 @@
+{% for column in pengumuman %}
+<li>
+  <div class="single_popular">
+    
+    <h3>
+    	<a href="{{url('front_pengumuman_org_slug',{'slug':column.slug})}}">
+			{{column.judulPengumuman}}
+ 		</a> 
+ 	</h3>
+ 	<p>
+    	<i>{{column.waktuDiadakan|date}} di {{column.tempatDiadakan}}</i>
+ 	</p>
+ 	{{column.topikPengumuman|raw}}
+  </div>
+</li>
+    
+{% endfor %}

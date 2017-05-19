@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Forumpengumuman</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ forumPengumuman.id }}</td>
+            </tr>
+            <tr>
+                <th>Topikpengumuman</th>
+                <td>{{ forumPengumuman.topikPengumuman }}</td>
+            </tr>
+            <tr>
+                <th>Judulpengumuman</th>
+                <td>{{ forumPengumuman.judulPengumuman }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ forumPengumuman.slug }}</td>
+            </tr>
+            <tr>
+                <th>Isipengumuman</th>
+                <td>{{ forumPengumuman.isiPengumuman }}</td>
+            </tr>
+            <tr>
+                <th>Waktudiadakan</th>
+                <td>{% if forumPengumuman.waktuDiadakan %}{{ forumPengumuman.waktuDiadakan|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Tempatdiadakan</th>
+                <td>{{ forumPengumuman.tempatDiadakan }}</td>
+            </tr>
+            <tr>
+                <th>Crateat</th>
+                <td>{% if forumPengumuman.crateAt %}{{ forumPengumuman.crateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if forumPengumuman.updateAt %}{{ forumPengumuman.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{% if forumPengumuman.statusDisplay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('forumpengumuman_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('forumpengumuman_edit', { 'id': forumPengumuman.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

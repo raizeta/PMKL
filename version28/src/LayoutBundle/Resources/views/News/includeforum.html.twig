@@ -1,0 +1,10 @@
+{% for forum in forums %}
+<div class="world-news-grid">
+	<img src="{{asset('news/images/a2.jpg')}}" alt="" />
+	<a href="{{url('front_forumorg_slug',{'slug':forum.slugContent})}}">
+		{{forum.judulContent|upper}}
+	 </a>
+	{{forum.summaryContent|truncate(100,true)|raw}}
+	<a href="{{url('front_forumorg_slug',{'slug':forum.slugContent})}}">Read More</a>
+</div>
+{% endfor %}

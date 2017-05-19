@@ -5,7 +5,8 @@ namespace EntitasBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 class FosTypeanggotaType extends AbstractType
 {
     /**
@@ -13,7 +14,9 @@ class FosTypeanggotaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('namaType')->add('deskripsiType')->add('statusDisplay')->add('createAt')->add('updateAt');
+        $builder
+        ->add('namaType',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Type Keanggotan','required'=>true] ])
+        ->add('deskripsiType',TextareaType::class,['attr'=>['class'=>'form-control','placeholder'=>'Deskripsi Type Keanggotan','required'=>true] ]);
     }
     
     /**

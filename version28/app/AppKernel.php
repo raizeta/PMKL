@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new UsersBundle\UsersBundle(),
             new LayoutBundle\LayoutBundle(),
             new BackEndBundle\BackEndBundle(),

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Namakegiatan</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ namaKegiatan.id }}</td>
+            </tr>
+            <tr>
+                <th>Nama</th>
+                <td>{{ namaKegiatan.nama }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ namaKegiatan.slug }}</td>
+            </tr>
+            <tr>
+                <th>Catatan</th>
+                <td>{{ namaKegiatan.catatan }}</td>
+            </tr>
+            <tr>
+                <th>Startperiode</th>
+                <td>{% if namaKegiatan.startPeriode %}{{ namaKegiatan.startPeriode|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Endperiode</th>
+                <td>{% if namaKegiatan.endPeriode %}{{ namaKegiatan.endPeriode|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{% if namaKegiatan.statusDisplay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if namaKegiatan.createAt %}{{ namaKegiatan.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if namaKegiatan.updateAt %}{{ namaKegiatan.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('namakegiatan_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('namakegiatan_edit', { 'id': namaKegiatan.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

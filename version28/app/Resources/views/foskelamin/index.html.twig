@@ -55,8 +55,8 @@
                 <tbody>
                 
                 {% for fosKelamin in fosKelamins %}
-                    <tr>
-                        <td><a href="{{ path('foskelamin_show', { 'id': fosKelamin.id }) }}">{{ fosKelamin.id }}</a></td>
+                    <tr {% if loop.index is odd %}class="success"{% endif %}>
+                        <td>{{loop.index + ( (currentpage -1) * itemperpage ) }}</td>
                         <td>{{ fosKelamin.namaKelamin }}</td>
                         <td>{% if fosKelamin.statusDisplay %}Yes{% else %}No{% endif %}</td>
                         <td align="center">

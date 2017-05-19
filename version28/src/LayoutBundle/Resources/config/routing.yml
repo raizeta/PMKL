@@ -1,7 +1,15 @@
 back_end_index:
-    path:     /index
+    path:     /backend
     defaults: { _controller: LayoutBundle:BackEnd:index }
 
 front_end_index:
-    path:     /frontend/index
+    path:     /frontend
     defaults: { _controller: LayoutBundle:FrontEnd:index }
+    
+news_end_index:
+    path:     /news
+    defaults: { _controller: LayoutBundle:News:index }
+
+paper_index:
+    path:     /
+    defaults: { _controller: LayoutBundle:Paper:index }

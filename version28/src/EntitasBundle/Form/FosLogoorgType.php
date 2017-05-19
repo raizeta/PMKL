@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 class FosLogoorgType extends AbstractType
 {
     /**
@@ -15,10 +16,8 @@ class FosLogoorgType extends AbstractType
     {
         $builder
         ->add('namaLogo',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Nama Logo','required'=>true] ])
-        ->add('deskripsiLogo',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Deskripsi Logo','required'=>true] ])
-        // ->add('imageName',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Nama Lengkap','required'=>true] ])
-        ->add('imageFile', 'vich_file', array('required'=> false,'allow_delete'  => true, 'download_link' => true))
-        ->add('setlogoDefault');
+        ->add('deskripsiLogo',TextareaType::class,['attr'=>['class'=>'form-control','placeholder'=>'Deskripsi Logo','required'=>true] ])
+        ->add('imageFile', 'vich_file', array('required'=> false,'allow_delete'  => true, 'download_link' => true));
     }
     
     /**

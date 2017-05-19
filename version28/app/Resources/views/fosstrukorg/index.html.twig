@@ -34,12 +34,8 @@
                 <tbody>
                 
                 {% for fosStrukorg in fosStrukorgs %}
-                    <tr>
-                        <td>
-                          <a href="{{ path('fosstrukorg_show', { 'id': fosStrukorg.id }) }}">
-                            {{ fosStrukorg.id }}
-                          </a>
-                        </td>
+                    <tr {% if loop.index is odd %}class="success"{% endif %}>
+                        <td>{{loop.index + ( (currentpage -1) * itemperpage ) }}</td>
                         <td>{{ fosStrukorg.getPjJabatan().namaLengkap }}</td>
 
                         <td>{{ fosStrukorg.getTypeJabatans().namaType }}</td>
@@ -61,7 +57,7 @@
                             {{'FALSE'|upper}}
                           {% endif %}
                         </td> #}
-                        <td>{{ fosStrukorg.namaKegiatan }}</td>
+                        <td>{{ fosStrukorg.getNamaKegiatan().nama }}</td>
                                             
                         <td align="center">
                             <i class="fa fa-eye fa-2x"></i>

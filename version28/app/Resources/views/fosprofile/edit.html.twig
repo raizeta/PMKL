@@ -3,14 +3,134 @@
     <div class="modal-content">
       <div class="modal-header bg-light-blue">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit Fosprofile</h4>
+        <h4 class="modal-title">New FosProfile</h4>
       </div>
       <div class="modal-body">
-        {% for formx in edit_form %}
-          <div class="form-group">
-            {{form_widget(formx)}}
+        <div class="row">
+          <div class="col-md-12">
+            
+            <div class="nav-tabs-custom">
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#tab_11" data-toggle="tab" aria-expanded="true">
+                    Basic
+                  </a>
+                </li>
+                <li class="">
+                  <a href="#tab_22" data-toggle="tab" aria-expanded="true">
+                    Alamat
+                  </a>
+                </li>
+                <li class="">
+                  <a href="#tab_33" data-toggle="tab" aria-expanded="true">
+                    Orang Tua
+                  </a>
+                </li>
+                <li class="">
+                  <a href="#tab_44" data-toggle="tab" aria-expanded="true">
+                    Pendidikan
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab_11">
+                  <div class="form-group">
+                    <label>Nama Lengkap</label>
+                      {{form_widget(edit_form.namaLengkap)}}
+                  </div>
+                  <div class="form-group">
+                    <label>Tempat Lahir</label>
+                      {{form_widget(edit_form.tempatLahir)}}
+                  </div>
+                  <div class="form-group">
+                    <label>Tanggal Lahir</label>
+                      {{form_widget(edit_form.tanggalLahir)}}
+                  </div>
+                  <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                      {{form_widget(edit_form.jenisKelamin)}}
+                  </div>
+                </div>
+                  <div class="tab-pane" id="tab_22">
+                    <div class="form-group">
+                      <label>Alamat Sekarang</label>
+                        {{form_widget(edit_form.alamatSekarang)}}
+                    </div>
+                    <div class="form-group">
+                      <label>No Telepon</label>
+                        {{form_widget(edit_form.nomorHandphone)}}
+                    </div>
+                    <div class="form-group">
+                      <label>Status Keanggotan</label>
+                        {{form_widget(edit_form.typeAnggotas)}}
+                    </div>
+                    <div class="form-group">
+                        {{form_widget(edit_form.imageFile)}}
+                    </div>
+                    <div class="form-group">
+                      <label>Status Display</label>
+                        {{form_widget(edit_form.statusDisplay)}}
+                    </div>
+                  </div>
+                <div class="tab-pane" id="tab_33">
+                  <fieldset class="scheduler-border">
+                      <legend class="scheduler-border">Data Ayah</legend>
+                      <div class="form-group">
+                        <label>Nama Ayah</label>
+                          <input class="form-control" type="text" placeholder="Default input">
+                      </div>
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                          <input class="form-control" type="date" placeholder="Default input">
+                      </div>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                      <legend class="scheduler-border">Data Ibu</legend>
+                      <div class="form-group">
+                        <label>Nama Ibu</label>
+                          <input class="form-control" type="text" placeholder="Default input">
+                      </div>
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                          <input class="form-control" type="date" placeholder="Default input">
+                      </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="tab_44">
+                  <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Pendidikan Terakhir</legend>
+                    <div class="form-group">
+                      <label>Nama Instansi</label>
+                        {{form_widget(edit_form.namaSma)}}
+                    </div>
+                    <div class="form-group">
+                      <label>Type Pendidikan</label>
+                        {{form_widget(edit_form.typePendidikan)}}
+                    </div>
+                    <div class="form-group">
+                      <label>Jurusan</label>
+                        {{form_widget(edit_form.jurusanSma)}}
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="input-group">
+                          <label>Masuk Pada</label>
+                          {{form_widget(edit_form.masukSma)}}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="input-group">
+                          <label>Lulus Pada</label>
+                          {{form_widget(edit_form.lulusSma)}}
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
           </div>
-        {% endfor %}
+        </div>
       </div>
       <div class="modal-footer bg-light-blue">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>

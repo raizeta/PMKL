@@ -1,0 +1,111 @@
+{% extends "LayoutBundle:Paper:index.html.twig" %}
+{% block slider %}
+{% endblock %}
+{% block contentkiri %}
+	<h2 class="title" align="center">{{forum.judulContent}}</h2>
+	<div class="container">
+  		<div class="row">
+  			{{forum.summaryContent|raw}}
+  		</div>
+  		<div class="row">
+  			{{forum.isiContent|raw}}
+  		</div>
+  	</div>
+  	{% if forum.getKomentars() %}
+	{# http://bootsnipp.com/snippets/featured/comment-posts-layout #}
+	<div class="row">
+	    <div class="col-md-12">
+	      	<h2 class="page-header" style="border-bottom: 0px solid #eee;margin: 40px 0 1px">
+	      		Comments
+	      		<a data-toggle="modal" id="myModalTrigger" class="btn btn-default btn-sm pull-right">
+              		<i class="fa fa-reply"></i> reply
+              	</a>
+	      	</h2>
+	        <section class="comment-list">
+	          {% for komentar in forum.getKomentars() %}
+	          <article class="row">
+	            <div class="col-md-2 col-sm-2 hidden-xs">
+	              <figure class="thumbnail" style="border: 0px solid #ddd;">
+	                {# <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" /> #}
+	                <img class="profile-img" src="{{asset('adminlte/logoorg_pic/pmkl-logo.jpg')}}">
+	              </figure>
+	            </div>
+	            <div class="col-md-10 col-sm-10">
+	              <div class="panel panel-default arrow left">
+	                <div class="panel-body">
+	                  <header class="text-left">
+	                    <div class="comment-user">
+	                    	<i class="fa fa-user"></i> 
+	                    	{{komentar.getKomentator().username|capitalize}}
+	                    	<time class="comment-date pull-right" datetime="16-12-2014 01:05"> 
+	                    		{{komentar.createAt|date('d-m-Y H:i:s')}}
+	                    	</time>
+	                    </div>
+	                    
+	                  </header>
+	                  <div class="comment-post">
+	                    {{komentar.isiKomentar|raw}}
+	                  </div>
+	                  <p class="text-right">
+	                  	{# <a href="#" class="btn btn-default btn-sm">
+	                  		<i class="fa fa-reply"></i> reply
+	                  	</a> #}
+	                  </p>
+	                </div>
+	              </div>
+	            </div>
+	          </article>
+	          {% endfor %}
+	        </section>
+	    </div>
+	</div>
+	{% endif %}
+	<div id="myModalcreate" class="modal fade" role="dialog">
+		{# {{dump(form)}} #}
+		{{form_start(form, {'action': path('front_komentar_new'), 'method': 'POST','attr': {'id': 'newKomentar'} })}}
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	          <div class="modal-header bg-light-blue">
+	            <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            <h4 class="modal-title">New ForumCategory</h4>
+	          </div>
+	          <div class="modal-body">
+	          	<div class="form-group">
+                    <label>Isi Komentar</label>
+                  	{{form_widget(form.isiKomentar)}}
+              	</div>
+              	<div class="hidden">
+                    <label>Nama Lengkap</label>
+                  	{{form_widget(form.komentator)}}
+              	</div>
+              	<div class="hidden">
+                    <label>Nama Lengkap</label>
+                  	{{form_widget(form.forumContent)}}
+              	</div>
+	          </div>
+	          <div class="modal-footer bg-light-blue">
+	            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+	            <button type="submit" class="btn btn-success">Save</button>
+	          </div>
+	        </div>
+	    </div>
+	    {{form_end(form)}}
+	</div>
+{% endblock contentkiri %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script>
+      $('#myModalcreate').on('hidden.bs.modal', function () 
+      {
+          $(this).find('#newKomentar').trigger('reset');
+      });
+
+      $('#myModalTrigger').click(function()
+      {
+          var options = {keyboard:true, backdrop:true, show:true};
+          $('#myModalcreate').modal(options);
+      });
+    </script>
+{% endblock javascripts %}
+

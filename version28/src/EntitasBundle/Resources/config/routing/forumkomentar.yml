@@ -1,0 +1,26 @@
+forumkomentar_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:ForumKomentar:index" }
+    methods:  GET
+
+forumkomentar_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:ForumKomentar:show" }
+    methods:  GET
+
+forumkomentar_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:ForumKomentar:new" }
+    methods:  [GET, POST]
+
+forumkomentar_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:ForumKomentar:edit" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+forumkomentar_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:ForumKomentar:delete" }
+    methods:  DELETE

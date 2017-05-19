@@ -16,7 +16,7 @@ back_end_bundle:
 
 layout_bundle:
     resource: "@LayoutBundle/Resources/config/routing.yml"
-    prefix:   /layout
+    prefix:   /
 
 users_bundle:
     resource: "@UsersBundle/Resources/config/routing.yml"

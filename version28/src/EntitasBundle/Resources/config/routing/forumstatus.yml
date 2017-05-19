@@ -1,0 +1,24 @@
+forumstatus_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:ForumStatus:index" }
+    methods:  GET
+
+forumstatus_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:ForumStatus:show" }
+    methods:  GET
+
+forumstatus_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:ForumStatus:new" }
+    methods:  [GET, POST]
+
+forumstatus_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:ForumStatus:edit" }
+    methods:  [GET, POST]
+
+forumstatus_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:ForumStatus:delete" }
+    methods:  DELETE

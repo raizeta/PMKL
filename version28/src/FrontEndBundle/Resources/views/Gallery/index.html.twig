@@ -1,37 +1,54 @@
-{% extends "LayoutBundle:FrontEnd:index.html.twig" %}
+{% extends "LayoutBundle:Paper:index.html.twig" %}
 {% block slider %}
 {% endblock slider %}
-{% block content %}
-<section id="services" class="services service-section">
-<div class="container">
-   	<div class="col-md-3">
-		<div class="panel widget">
-		  	<div style="background-image: url('http://lorempixel.com/400/400/fashion/6/')" class="panel-body text-center bg-center">
-		     <div class="row row-table">
-		        <div class="col-xs-12 text-white">
-		           <img src="{{asset('comprof/images/pmkl.png')}}" alt="Image" class="img-thumbnail img-circle thumb128">
-		           <h5 style="color:#dadee2">Radumta Sitepu</h5>
-		        </div>
-		     </div>
-		  </div>
-		  <div class="list-group">
-		     <a href="#" class="list-group-item">
-		        <span class="pull-right"><i class="fa fa-envelope"></i></span>
-		        radumta@gmail.com</a>
-		     <a href="#" class="list-group-item">
-		        <span class="pull-right"><i class="fa fa-bullhorn"></i></span>
-		        +6281260014478</a>
-	        <a href="#" class="list-group-item">
-		        <span class="pull-right"><i class="fa fa-hourglass"></i></span>
-		        Newbie
-		    </a>
-		    <a href="#" class="list-group-item">
-		        <span class="pull-right"><i class="fa fa-calendar"></i></span>
-		        12 Maret 2017
-		    </a>
-		  </div>
-		</div>
+{% block contentkiri %}
+    <h2 class="title">GALLERY PMKL SE-JABODETABEK</h2>
+	<div class="row">
+		<div id="blueimp-gallery" class="blueimp-gallery">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>
+        <div id="links" class="links">
+            <a href="{{asset('adminlte/dist/img/photo1.png')}}" title="Banana">
+                <img src="{{asset('adminlte/dist/img/photo1.png')| imagine_filter('gallery_thumb')}}" alt="Banana">
+            </a>
+            <a href="{{asset('adminlte/dist/img/photo2.png')}}" title="Apple">
+                <img src="{{asset('adminlte/dist/img/photo2.png')| imagine_filter('gallery_thumb')}}" alt="Banana">
+            </a>
+            <a href="{{asset('adminlte/dist/img/photo3.jpg')}}" title="Orange">
+                <img src="{{asset('adminlte/dist/img/photo3.jpg')| imagine_filter('gallery_thumb')}}" alt="Banana">
+            </a>
+            <a href="{{asset('adminlte/dist/img/photo4.jpg')}}" title="Banana">
+                <img src="{{asset('adminlte/dist/img/photo4.jpg')| imagine_filter('gallery_thumb')}}" alt="Banana">
+            </a>
+            <a href="{{asset('adminlte/dist/img/photo1.png')}}" title="Banana">
+                <img src="{{asset('adminlte/dist/img/photo1.png')| imagine_filter('gallery_thumb')}}" alt="Banana">
+            </a>
+            <a href="{{asset('adminlte/dist/img/photo2.png')}}" title="Apple">
+                <img src="{{asset('adminlte/dist/img/photo2.png')| imagine_filter('gallery_thumb')}}" alt="Banana">
+            </a>
+            <a href="{{asset('adminlte/dist/img/photo3.jpg')}}" title="Orange">
+                <img src="{{asset('adminlte/dist/img/photo3.jpg')| imagine_filter('gallery_thumb')}}" alt="Banana">
+            </a>
+            <a href="{{asset('adminlte/dist/img/photo4.jpg')}}" title="Banana">
+                <img src="{{asset('adminlte/dist/img/photo4.jpg')| imagine_filter('gallery_thumb')}}" alt="Banana">
+            </a>
+        </div>
    	</div>
-</div>
-</section>
-{% endblock content %}
+   	<script>
+        document.getElementById('links').onclick = function (event) 
+        {
+            event = event || window.event;
+            var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+            blueimp.Gallery(links, options);
+        };
+    </script>
+{% endblock contentkiri %}

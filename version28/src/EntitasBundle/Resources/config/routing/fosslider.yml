@@ -1,0 +1,24 @@
+fosslider_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:FosSlider:index" }
+    methods:  GET
+
+fosslider_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:FosSlider:show" }
+    methods:  GET
+
+fosslider_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:FosSlider:new" }
+    methods:  [GET, POST]
+
+fosslider_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:FosSlider:edit" }
+    methods:  [GET, POST]
+
+fosslider_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:FosSlider:delete" }
+    methods:  DELETE

@@ -1,0 +1,26 @@
+forumpengumuman_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:ForumPengumuman:index" }
+    methods:  GET
+
+forumpengumuman_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:ForumPengumuman:show" }
+    methods:  GET
+
+forumpengumuman_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:ForumPengumuman:new" }
+    methods:  [GET, POST]
+
+forumpengumuman_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:ForumPengumuman:edit" }
+    methods:  [GET, POST]
+    options:
+            expose: true
+
+forumpengumuman_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:ForumPengumuman:delete" }
+    methods:  DELETE

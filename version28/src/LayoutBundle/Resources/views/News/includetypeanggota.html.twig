@@ -1,0 +1,7 @@
+<div class='navbar-inner' style="height: auto;background:#e4e4e4">
+	<ul class="nav">
+		{% for typeanggota in typeanggota %}
+	  	<li><a href="{{url('front_anggota_slug',{'slug':typeanggota.slug})}}">{{typeanggota.namaType}}</a></li>
+	  	{% endfor %}
+	</ul>
+</div>

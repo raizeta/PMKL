@@ -1,0 +1,7 @@
+{% for typestatus in typestatus %}
+  	<li>
+  		<a href="{{url('front_forumorg_slug',{'slug':typestatus.slug})}}">
+  			{{typestatus.namaStatus}}
+  		</a>
+  	</li>
+{% endfor %}

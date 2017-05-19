@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fostypependidikan</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fosTypependidikan.id }}</td>
+            </tr>
+            <tr>
+                <th>Namatype</th>
+                <td>{{ fosTypependidikan.namaType }}</td>
+            </tr>
+            <tr>
+                <th>Deskripsitype</th>
+                <td>{{ fosTypependidikan.deskripsiType }}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{% if fosTypependidikan.statusDisplay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if fosTypependidikan.createAt %}{{ fosTypependidikan.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if fosTypependidikan.updateAt %}{{ fosTypependidikan.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fostypependidikan_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('fostypependidikan_edit', { 'id': fosTypependidikan.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

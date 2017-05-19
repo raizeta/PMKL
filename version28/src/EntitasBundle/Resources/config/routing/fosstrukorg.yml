@@ -3,13 +3,20 @@ fosstrukorg_index:
     defaults: { _controller: "EntitasBundle:FosStrukorg:index" }
     methods:  GET
 
+# fosstrukorg_indexjson:
+#     path:     /json
+#     defaults: { _controller: "EntitasBundle:FosStrukorg:indexJson" }
+#     methods:  GET
+#     options:
+#             expose: true
+
 fosstrukorg_indexjson:
-    path:     /json
+    path:     /json/{slug}
     defaults: { _controller: "EntitasBundle:FosStrukorg:indexJson" }
     methods:  GET
     options:
             expose: true
-
+            
 fosstrukorg_show:
     path:     /{id}/show
     defaults: { _controller: "EntitasBundle:FosStrukorg:show" }

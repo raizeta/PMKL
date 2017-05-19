@@ -1,0 +1,5 @@
+{% for slider in slider %}
+	<li>
+		<img src="{{asset('adminlte/slider_image/'~ slider.imageName)| imagine_filter('slider_thumb')}}" alt="" title="{{slider.judul}}" />
+	</li>
+{% endfor %}

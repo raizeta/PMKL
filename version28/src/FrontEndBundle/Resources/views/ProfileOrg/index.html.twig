@@ -1,23 +1,24 @@
-{% extends "LayoutBundle:FrontEnd:index.html.twig" %}
+{% extends "LayoutBundle:Paper:index.html.twig" %}
 {% block slider %}
-{% endblock slider %}
-{% block content %}
-<section id="services" class="services service-section">
-  <div class="container">
-    <div class="row">
-      {% for entity in entities %}
-      <div class="col-md-6 col-sm-6 services text-center"> 
+{% endblock %}
+{% block contentkiri %}
+ <h2 class="title">PROFILE PMKL SE-JABODETABEK</h2>
+  <div class="row">
+    {% for entity in entities %}
+      <div class="col-md-6 col-sm-6 services  text-center"> 
         <span class="{{entity.iconImage}}"></span>
-        <div class="services-content">
-          <h5>{{entity.judulContent|upper}}</h5>
-          <p align="justify">
-            {{entity.isiContent}}...<a href="">Read More</a>
-          </p>
-
-        </div>
+      <div class="services-content">
+        <h5>
+          <a href="{{url('front_profileorg_slug',{'slug':entity.slugContent})}}" style="color:#E74C3C;text-decoration:none">
+            {{entity.judulContent|upper}}
+          </a>
+        </h5>
+        <p align="justify">
+          {{entity.isiContent}}...
+          <a href="{{url('front_profileorg_slug',{'slug':entity.slugContent})}}" style="color:#E74C3C;text-decoration:none">Read More</a>
+        </p>
       </div>
-      {% endfor %}
     </div>
-  </div>
-</section>
-{% endblock content %}
+    {% endfor %}
+  </div>  
+{% endblock contentkiri %}

@@ -1,0 +1,121 @@
+{% extends "LayoutBundle:News:layout.html.twig" %}
+{% block contentkiri %}		
+	<div class="col-md-9 total-news">
+		{% block slider %}
+		<div class="slider">
+			 <div class="conference-slider">
+				<ul class="conference-rslide" id="conference-slider">
+				  <li><img src="{{asset('news/images/c22.jpg')}}" alt=""></li>
+				  <li><img src="{{asset('news/images/c1.jpg')}}" alt=""></li>
+				  <li><img src="{{asset('news/images/c33.jpg')}}" alt=""></li>
+				  <li><img src="{{asset('news/images/c44.jpg')}}" alt=""></li>
+				</ul>
+
+				<ul id="slider3-pager">
+				  <li><a href="#"><img src="{{asset('news/images/c22.jpg')}}" alt=""></a></li>
+				  <li><a href="#"><img src="{{asset('news/images/c1.jpg')}}" alt=""></a></li>
+				  <li><a href="#"><img src="{{asset('news/images/c33.jpg')}}" alt=""></a></li>
+				  <li><a href="#"><img src="{{asset('news/images/c44.jpg')}}" alt=""></a></li>
+				</ul>
+				<div class="breaking-news-title">
+					<p>Lorem ipsum dolor sit amet, consectetur Nulla quis lorem neque, mattis venenatis lectus. </p>
+				</div>
+			</div> 
+			<h5 class="breaking">Breaking news</h5>
+		</div>
+		{% endblock slider %}	
+		<div class="posts">
+			<div class="left-posts">
+				<div class="world-news">
+					<div class="main-title-head">
+						<h3>LATEST BERITA</h3>
+						<a href="singlepage.html">More  +</a>
+						<div class="clearfix"></div>
+					</div>
+					<div class="world-news-grids">
+						{{ render(controller('LayoutBundle:News:includeberita')) }}
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="latest-articles">
+					<div class="main-title-head">
+						<h3>LATEST FORUM</h3>
+						<a href="singlepage.html">More  +</a>
+						<div class="clearfix"></div>
+					</div>
+					<div class="world-news-grids">
+						{{ render(controller('LayoutBundle:News:includeforum')) }}
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="gallery">
+					<div class="main-title-head">
+						<h3>GALLERY</h3>
+						<a href="#">More  +</a>
+						<div class="clearfix"></div>
+					</div>
+					<div class="gallery-images">
+						<div class="course_demo1">
+							{{ render(controller('LayoutBundle:News:includegallery')) }}
+					 	</div>
+				 	</div>
+				</div>
+{# 				<div class="tech-news">
+					<div class="main-title-head">
+						<h3>PENGUMUMAN PENTING</h3>
+						<a href="singlepage.html">More  +</a>
+						<div class="clearfix"></div>
+					</div>	
+					<div class="tech-news-grids">
+						{{ render(controller('LayoutBundle:News:includepengumuman')) }}
+						<div class="clearfix"></div>
+					</div>
+				</div> #}
+			</div>
+			<div class="clearfix"></div>	
+		</div>
+	</div>
+{% endblock contentkiri %}
+{% block contentkanan %}	
+	<div class="col-md-3 side-bar">
+		<div class="videos">
+			<div class="main-title-head">
+				<h5>Pengumuman Penting</h5>
+				<div class="clearfix"></div>
+			</div>
+			{{ render(controller('LayoutBundle:News:includepengumuman')) }}
+			<a class="more1" href="{{url('front_pengumuman_org')}}">More  +</a>
+			<div class="clearfix"></div>
+		</div>
+		<div class="popular sign_up">
+			<div class="main-title-head">
+				<h5>popular</h5>
+				<h4> Most    read</h4>
+				<div class="clearfix"></div>
+			</div>		
+			<div class="popular-news">
+				<div class="popular-grid">
+					<i>Sept 24th 2011 </i>
+					<p>Lorem ipsum dolor sit amet conse ctetur adipiscing elit  <a href="singlepage.html">Read More</a></p>
+				</div>
+				<div class="popular-grid">
+					<i>Sept 24th 2011 </i>
+					<p>Lorem ipsum dolor sit amet conse ctetur adipiscing elit  <a href="singlepage.html">Read More</a></p>
+				</div>
+				<div class="popular-grid">
+					<i>Sept 24th 2011 </i>
+					<p>Lorem ipsum dolor sit amet conse ctetur adipiscing elit  <a href="singlepage.html">Read More</a></p>
+				</div>
+				<div class="popular-grid">
+					<i>Sept 24th 2011 </i>
+					<p>Lorem ipsum dolor sit amet conse ctetur adipiscing elit  <a href="singlepage.html">Read More</a></p>
+				</div>
+				<div class="popular-grid">
+					<i>Sept 24th 2011 </i>
+					<p>Lorem ipsum dolor sit amet conse ctetur adipiscing elit  <a href="singlepage.html">Read More</a></p>
+				</div>
+				<a class="more" href="singlepage.html">More  +</a>
+			</div>
+		</div>
+	</div>
+{% endblock contentkanan %}	

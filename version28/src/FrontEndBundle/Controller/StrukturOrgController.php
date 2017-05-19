@@ -6,11 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class StrukturOrgController extends Controller
 {
-    public function indexAction()
+    public function indexAction($slug)
     {
-        return $this->render('FrontEndBundle:StrukturOrg:index.html.twig', array(
-            // ...
-        ));
+        return $this->render('FrontEndBundle:StrukturOrg:index.html.twig',['slug'=>$slug]);
     }
 
 }

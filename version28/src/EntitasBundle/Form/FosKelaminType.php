@@ -13,7 +13,8 @@ class FosKelaminType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('namaKelamin',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Nama Kelamin','required'=>true] ]);
+        $builder
+        ->add('namaKelamin',TextType::class,['attr'=>['class'=>'form-control','placeholder'=>'Nama Kelamin','required'=>true] ]);
     }
     
     /**

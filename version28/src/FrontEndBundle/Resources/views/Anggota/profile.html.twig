@@ -1,0 +1,88 @@
+{% extends "LayoutBundle:Paper:index.html.twig" %}
+{% block slider %}
+{% endblock %}
+{% block contentkiri %}
+	<div id="cv" class="instaFade">
+	<div class="mainDetails">
+		<div id="headshot" class="quickFade">
+			{% if profiles.imageName %}
+	    		<img src="{{('adminlte/anggota_pic/'~ profiles.imageName)| imagine_filter('anggota_front')}}" alt="">
+	    	{% else %}
+	       		<img src="{{asset('comprof/images/pmkl.png')}}" alt="Image" class="img-thumbnail img-circle thumb128" style="height:100px">
+	   		{% endif %}
+{# 			<img src="headshot.jpg" alt="Alan Smith"> #}
+		</div>
+		
+		<div id="name">
+			<h1 class="quickFade delayTwo" style="margin-bottom:0px">{{ profiles.namaLengkap }}</h1>
+		</div>
+		
+		<div id="contactDetails" class="quickFade delayFour">
+			<ul>
+				<li>e: <a href="mailto:joe@bloggs.com" target="_blank">radumta@gmail.com</a></li>
+				<li>m: 01234567890</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="mainArea" class="quickFade delayFive">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Personal Profile</h1>
+				</div>
+				<div class="sectionContent">
+					<article>
+						<h2 style="font-size:1em">Alamat Sekarang</h2>
+						<p class="subDetails" style="font-size:1em">{{profiles.alamatSekarang}}</p>
+					</article>
+					<article>
+						<h2 style="font-size:1em">Tempat, Tanggal Lahir</h2>
+						<p class="subDetails" style="font-size:1em">
+							{{profiles.tempatLahir}}, {{profiles.tanggalLahir|date('d M Y')}}
+						</p>
+					</article>
+					<article>
+						<h2 style="font-size:1em">Jenis Kelamin</h2>
+						<p class="subDetails" style="font-size:1em">
+							{{profiles.getJenisKelamin().namaKelamin}}
+						</p>
+					</article>
+					<article>
+						<h2 style="font-size:1em">Email</h2>
+						<p class="subDetails" style="font-size:1em">radumta@gmail.com</p>
+					</article>
+					<article>
+						<h2 style="font-size:1em">Nomor Telephone</h2>
+						<p class="subDetails" style="font-size:1em">+62 812-600-14478</p>
+					</article>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		<section>
+			<div class="sectionTitle">
+				<h1>Pendidikan</h1>
+			</div>
+			
+			<div class="sectionContent">
+				{% if (profiles.namaSma) and (profiles.masukSma) and (profiles.lulusSma) %}
+				<article>
+					<h2 style="font-size:1em">{{profiles.namaSma}}</h2>
+					{% if profiles.jurusanSma %}
+						<p class="subDetails" style="font-size:1em">{{profiles.jurusanSma}}</p>
+					{% endif %}
+					<p class="subDetails" style="font-size:1em">
+                    	{{ profiles.masukSma|date('M Y') }} - {{ profiles.lulusSma|date('M Y') }}
+					</p>
+				</article>
+				{% endif %}
+			</div>
+			<div class="clear"></div>
+		</section>
+		<section></section>
+	</div>
+</div>
+	
+{% endblock contentkiri %}

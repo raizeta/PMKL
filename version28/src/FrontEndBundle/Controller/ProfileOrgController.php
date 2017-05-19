@@ -14,4 +14,12 @@ class ProfileOrgController extends Controller
         	array('entities'=>$entities));
     }
 
+    public function slugAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('EntitasBundle:FosProfileorg')->findOneBy(array('slugContent'=>$slug));
+        return $this->render('FrontEndBundle:ProfileOrg:slug.html.twig', 
+        	array('entities'=>$entities));
+    }
+
 }

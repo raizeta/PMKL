@@ -57,6 +57,11 @@ class FosTypepengeluaran
     private $updateAt;
 
     /**
+     * @ORM\OneToMany(targetEntity="TblPemasukan", mappedBy="typePengeluaran")
+     */
+    protected $pengeluarans;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -64,6 +69,7 @@ class FosTypepengeluaran
         $this->createAt         = new \DateTime('now');
         $this->updateAt         = new \DateTime('now');
         $this->statusDisplay    = true;
+        $this->pengeluarans     = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -194,5 +200,39 @@ class FosTypepengeluaran
     public function getUpdateAt()
     {
         return $this->updateAt;
+    }
+
+    /**
+     * Add pengeluaran
+     *
+     * @param \EntitasBundle\Entity\TblPemasukan $pengeluaran
+     *
+     * @return FosTypepengeluaran
+     */
+    public function addPengeluaran(\EntitasBundle\Entity\TblPemasukan $pengeluaran)
+    {
+        $this->pengeluarans[] = $pengeluaran;
+
+        return $this;
+    }
+
+    /**
+     * Remove pengeluaran
+     *
+     * @param \EntitasBundle\Entity\TblPemasukan $pengeluaran
+     */
+    public function removePengeluaran(\EntitasBundle\Entity\TblPemasukan $pengeluaran)
+    {
+        $this->pengeluarans->removeElement($pengeluaran);
+    }
+
+    /**
+     * Get pengeluarans
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPengeluarans()
+    {
+        return $this->pengeluarans;
     }
 }

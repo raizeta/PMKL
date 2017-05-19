@@ -46,10 +46,22 @@ class User extends BaseUser
      */
     private $linkedinID;
     
+    /**
+     * @ORM\OneToMany(targetEntity="EntitasBundle\Entity\ForumContent", mappedBy="authors")
+     */
+    protected $forumcontents;
+
+    /**
+     * @ORM\OneToMany(targetEntity="EntitasBundle\Entity\ForumKomentar", mappedBy="komentator")
+     */
+    protected $komentars;
+
     public function __construct()
     {
-    parent::__construct();
-    // your own logic
+        parent::__construct();
+        $this->forumcontents    = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->komentars        = new \Doctrine\Common\Collections\ArrayCollection();
+        // your own logic
     }
 
     /**
@@ -152,5 +164,73 @@ class User extends BaseUser
     public function getLinkedinID()
     {
         return $this->linkedinID;
+    }
+
+    /**
+     * Add forumcontent
+     *
+     * @param \EntitasBundle\Entity\ForumContent $forumcontent
+     *
+     * @return User
+     */
+    public function addForumcontent(\EntitasBundle\Entity\ForumContent $forumcontent)
+    {
+        $this->forumcontents[] = $forumcontent;
+
+        return $this;
+    }
+
+    /**
+     * Remove forumcontent
+     *
+     * @param \EntitasBundle\Entity\ForumContent $forumcontent
+     */
+    public function removeForumcontent(\EntitasBundle\Entity\ForumContent $forumcontent)
+    {
+        $this->forumcontents->removeElement($forumcontent);
+    }
+
+    /**
+     * Get forumcontents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getForumcontents()
+    {
+        return $this->forumcontents;
+    }
+
+    /**
+     * Add komentar
+     *
+     * @param \EntitasBundle\Entity\ForumKomentar $komentar
+     *
+     * @return User
+     */
+    public function addKomentar(\EntitasBundle\Entity\ForumKomentar $komentar)
+    {
+        $this->komentars[] = $komentar;
+
+        return $this;
+    }
+
+    /**
+     * Remove komentar
+     *
+     * @param \EntitasBundle\Entity\ForumKomentar $komentar
+     */
+    public function removeKomentar(\EntitasBundle\Entity\ForumKomentar $komentar)
+    {
+        $this->komentars->removeElement($komentar);
+    }
+
+    /**
+     * Get komentars
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getKomentars()
+    {
+        return $this->komentars;
     }
 }

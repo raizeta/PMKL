@@ -1,0 +1,72 @@
+{% extends "LayoutBundle:Paper:layout.html.twig" %}
+{% block contentkiri %}
+  <div class="left_coloum floatleft">
+    {# <div class="single_left_coloum_wrapper">
+      <h2 class="title">LATEST NEWS</h2>
+      <a class="more" href="{{url('front_forumorg')}}">more</a>
+      {{ render(controller('LayoutBundle:Paper:includeberita')) }}
+    </div> #}
+    <div class="single_left_coloum_wrapper">
+      <h2 class="title">LATEST FORUM</h2>
+      <a class="more" href="{{url('front_forumorg')}}">more</a>
+      {{ render(controller('LayoutBundle:Paper:includeforum')) }}
+    </div>
+    <div class="single_left_coloum_wrapper gallery">
+        <h2 class="title">LATEST GALLERY</h2>
+        <a class="more" href="{{url('front_galleryorg')}}">more</a> 
+         {{ render(controller('LayoutBundle:Paper:includegallery')) }}
+    </div>
+  </div>
+{% endblock contentkiri %}
+
+{% block contentkanan %}
+  <div class="single_sidebar">
+    <div class="popular">
+      <h2 class="title">Pengumuman Penting</h2>
+      <ul>
+        {{ render(controller('LayoutBundle:Paper:includepengumuman')) }}
+      </ul>
+      <a class="popular_more" href="{{url('front_pengumuman_org')}}">more</a> </div>
+  </div>
+{#   <div class="single_sidebar">
+    <div class="popular">
+      <h2 class="title">Popular</h2>
+      <ul>
+        <li>
+          <div class="single_popular">
+            <p>Sept 24th 2045</p>
+            <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+          </div>
+        </li>
+        <li>
+          <div class="single_popular">
+            <p>Sept 24th 2045</p>
+            <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+          </div>
+        </li>
+        <li>
+          <div class="single_popular">
+            <p>Sept 24th 2045</p>
+            <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+          </div>
+        </li>
+        <li>
+          <div class="single_popular">
+            <p>Sept 24th 2045</p>
+            <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+          </div>
+        </li>
+        <li>
+          <div class="single_popular">
+            <p>Sept 24th 2045</p>
+            <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+          </div>
+        </li>
+      </ul>
+      <a class="popular_more">more</a> </div>
+  </div> #}
+  <div class="single_sidebar"> 
+    <img src="{{asset('paper/images/add1.png')}}" alt="" /> 
+  </div>
+
+{% endblock contentkanan %}

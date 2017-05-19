@@ -30,6 +30,46 @@
 <body>
 {% block header_nav %}
 <section class="banner" role="banner" id="home">
+  <header id="header">
+    <div class="header-content clearfix"> 
+      <a class="logo" href="index.html">PMKL </a>
+      <nav class="navigation" role="navigation">
+        <ul class="primary-nav">
+          <li><a href="{{url('front_end_index')}}">Home</a></li>
+          <li><a href="{{url('front_profileorg')}}">Profile</a></li>
+          <li class="dropdown primary-nav">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Anggota
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{url('front_anggota')}}">AKTIF</a></li>
+              <li><a href="{{url('front_anggota')}}">ALUMNI</a></li>
+              <li><a href="{{url('front_anggota')}}">NON AKTIF</a></li>
+              <li><a href="{{url('front_anggota')}}">DIPECAT</a></li>
+              <li><a href="{{url('front_anggota')}}">RESIGN</a></li>
+              <li><a href="{{url('front_anggota')}}">ORANG TUA</a></li>
+            </ul>
+          </li>
+          <li class="dropdown primary-nav">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Struktur
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{url('front_strukturorg')}}">PENGURUS HARIAN</a></li>
+              <li><a href="{{url('front_strukturorg')}}">PANITIA NATAL</a></li>
+            </ul>
+          </li> 
+          <li><a href="{{url('front_keuanganorg')}}">Keuangan</a></li>
+          <li><a href="{{url('front_galleryorg')}}">Galery</a></li>
+          <li><a href="{{url('front_progkerjaorg')}}">Program Kerja</a></li>
+          <li><a href="{{url('front_forumorg')}}">Forum</a></li>
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li><a href="{{url('fos_user_security_logout')}}">LOGOUT</a></li>
+          {% else %}
+            <li><a href="{{url('fos_user_security_login')}}">LOGIN</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
+  </header>
   <header id="header" class="fixed">
     <div class="header-content clearfix"> 
       <a class="logo" href="index.html">PMKL </a>

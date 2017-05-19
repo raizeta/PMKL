@@ -1,0 +1,89 @@
+<?php
+
+namespace EntitasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ForumPengumuman
+ *
+ * @ORM\Table(name="forum_pengumuman")
+ * @ORM\Entity
+ */
+class ForumPengumuman
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="topik_pengumuman", type="text", length=65535, nullable=false)
+     */
+    private $topikPengumuman;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="judul_pengumuman", type="string", length=255, nullable=false)
+     */
+    private $judulPengumuman;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isi_pengumuman", type="text", length=65535, nullable=false)
+     */
+    private $isiPengumuman;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="waktu_diadakan", type="datetime", nullable=false)
+     */
+    private $waktuDiadakan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tempat_diadakan", type="string", length=255, nullable=false)
+     */
+    private $tempatDiadakan;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="crate_at", type="datetime", nullable=false)
+     */
+    private $crateAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="update_at", type="datetime", nullable=false)
+     */
+    private $updateAt;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status_display", type="boolean", nullable=false)
+     */
+    private $statusDisplay;
+
+
+}
+

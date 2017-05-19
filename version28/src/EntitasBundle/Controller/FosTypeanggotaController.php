@@ -44,7 +44,13 @@ class FosTypeanggotaController extends Controller
         $form = $this->createForm('EntitasBundle\Form\FosTypeanggotaType', $fosTypeanggotum);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $data = $form->getData();
+            $nama = $data->getNamaType();
+            $slug = $this->get('entitas.slugger')->slugify($nama);
+            $fosTypeanggotum->setSlug($slug);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($fosTypeanggotum);
             $em->flush();

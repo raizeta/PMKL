@@ -33,7 +33,7 @@ class BackEndMenuBuilder
              ->setAttribute('icon','fa fa-umbrella')
              ->setAttribute('class','treeview');
 
-        $menu['Master Data']->addChild('Logo',array('route'=>'foslogoorg_index'))
+        $menu['Master Data']->addChild('Logo Organisasi',array('route'=>'foslogoorg_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
 
         $menu['Master Data']->addChild('Profile Organisasi',array('route'=>'fosprofileorg_index'))
@@ -41,8 +41,19 @@ class BackEndMenuBuilder
 
         $menu['Master Data']->addChild('Anggota Organisasi',array('route'=>'fosprofile_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();  
+                       
         $menu['Master Data']->addChild('Struktur Organisasi',array('route'=>'fosstrukorg_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+
+        $menu['Master Data']->addChild('Pengumuman',array('route'=>'forumpengumuman_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+                       
+        $menu['Master Data']->addChild('Slider',array('route'=>'fosslider_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+
+        $menu['Master Data']->addChild('Kegiatan',array('route'=>'namakegiatan_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+
         $menu['Master Data']->addChild('Type Kelamin',array('route'=>'foskelamin_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
         $menu['Master Data']->addChild('Type Anggota',array('route'=>'fostypeanggota_index'))
@@ -53,6 +64,17 @@ class BackEndMenuBuilder
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
         $menu['Master Data']->addChild('Type Pengeluaran',array('route'=>'fostypepengeluaran_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+        $menu['Master Data']->addChild('Type Pendidikan',array('route'=>'fostypependidikan_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+
+        $menu['Master Data']->addChild('Forum Category',array('route'=>'forumcategory_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+        $menu['Master Data']->addChild('Forum Status',array('route'=>'forumstatus_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+        $menu['Master Data']->addChild('Forum Content',array('route'=>'forumcontent_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();
+        $menu['Master Data']->addChild('Forum Komentar',array('route'=>'forumkomentar_index'))
+                       ->setAttribute('icon', 'fa fa-circle-o')->getParent();       
         // $menu->addChild('Keanggotaan',array('label'=>'Keanggotaan'))
         //      ->setAttribute('dropdown',true)
         //      ->setAttribute('icon','fa fa-university')
@@ -72,10 +94,10 @@ class BackEndMenuBuilder
              ->setAttribute('icon','fa fa-university')
              ->setAttribute('class','treeview');
 
-        $menu['Keuangan']->addChild('Masuk',array('route'=>'foskelamin_index'))
+        $menu['Keuangan']->addChild('Masuk',array('route'=>'tblpemasukan_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
 
-        $menu['Keuangan']->addChild('Keluar',array('route'=>'foskelamin_index'))
+        $menu['Keuangan']->addChild('Keluar',array('route'=>'tblpengeluaran_index'))
                        ->setAttribute('icon', 'fa fa-circle-o')->getParent();
         return $menu;
     }

@@ -165,12 +165,37 @@ liip_imagine:
             filters:
                 thumbnail: { size: [150, 150], mode: outbound }
                 background : { size : [152, 152], position : center, color : '#ffffff' }
+        slider_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [980, 350], mode: outbound }
+                background : { size : [982, 352], position : center, color : '#ffffff' }
+        sliderback_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [50, 50], mode: outbound }
+        gallery_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [160, 150], mode: outbound }
+                background : { size : [162, 152], position : center, color : '#ffffff' }
+oneup_flysystem:
+    adapters:
+        my_adapter:
+            cloudinary:
+                api: entitas.cloudinary_client
+    filesystems:
+        product_image_fs:
+            adapter:    my_adapter
+            mount:      product_image_fs
 
 vich_uploader:
     db_driver: orm
+    # storage:   flysystem
     mappings:
         product_image:
             uri_prefix:         /adminlte/anggota_pic
+            # upload_destination: product_image_fs
             upload_destination: %kernel.root_dir%/../web/adminlte/anggota_pic
 
             inject_on_load:     false
@@ -179,6 +204,13 @@ vich_uploader:
         logoorg_image:
             uri_prefix:         /adminlte/logoorg_pic
             upload_destination: %kernel.root_dir%/../web/adminlte/logoorg_pic
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        slider_image:
+            uri_prefix:         /adminlte/slider_image
+            upload_destination: %kernel.root_dir%/../web/adminlte/slider_image
 
             inject_on_load:     false
             delete_on_update:   true

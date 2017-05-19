@@ -1,0 +1,7 @@
+{% for typeanggota in typeanggota %}
+  	<li>
+  		<a href="{{url('front_anggota_slug',{'slug':typeanggota.slug})}}">
+  			{{typeanggota.namaType}}
+  		</a>
+  	</li>
+{% endfor %}

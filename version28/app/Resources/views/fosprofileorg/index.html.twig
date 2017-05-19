@@ -38,8 +38,8 @@
                 <tbody>
                 
                 {% for fosProfileorg in fosProfileorgs %}
-                    <tr>
-                        <td><a href="{{ path('fosprofileorg_show', { 'id': fosProfileorg.id }) }}">{{ fosProfileorg.id }}</a></td>
+                    <tr {% if loop.index is odd %}class="success"{% endif %}>
+                        <td>{{loop.index + ( (currentpage -1) * itemperpage ) }}</td>
                         <td>{{ fosProfileorg.judulContent }}</td>
                         <td>{{ fosProfileorg.slugContent }}</td>
                         <td>{{ fosProfileorg.summaryContent }}</td>

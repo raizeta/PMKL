@@ -31,6 +31,13 @@ class FosTypeanggota
     /**
      * @var string
      *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="deskripsi_type", type="string", length=255, nullable=false)
      */
     private $deskripsiType;
@@ -57,7 +64,7 @@ class FosTypeanggota
     private $updateAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="FosProfile", mappedBy="type_anggotas")
+     * @ORM\OneToMany(targetEntity="FosProfile", mappedBy="typeAnggotas")
      */
     protected $profiles;
 
@@ -104,6 +111,30 @@ class FosTypeanggota
     public function getNamaType()
     {
         return $this->namaType;
+    }
+
+    /**
+     * Set Slug
+     *
+     * @param string $slug
+     *
+     * @return FosTypeanggota
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get Slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

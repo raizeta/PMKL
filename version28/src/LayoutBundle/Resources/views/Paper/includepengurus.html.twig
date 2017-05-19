@@ -1,0 +1,7 @@
+{% for pengurus in pengurus %}
+  	<li>
+  		<a href="{{url('front_strukturorg',{'slug':pengurus.slug})}}">
+  			{{pengurus.nama|upper}}
+  		</a>
+  	</li>
+{% endfor %}

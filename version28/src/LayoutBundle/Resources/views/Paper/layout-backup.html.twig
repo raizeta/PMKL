@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>PMKL SE-JABODETABEK</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="{{asset('paper/assets/font/font-awesome.min.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('paper/assets/font/font.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('paper/assets/css/bootstrap.min.css')}}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{asset('paper/assets/css/style.css')}}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{asset('paper/assets/css/custom.css')}}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{asset('paper/assets/css/responsive.css')}}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{asset('paper/assets/css/jquery.bxslider.css')}}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{asset('paper/assets/css/pengumuman.css')}}" media="screen" />
+
+</head>
+<body>
+<div class="body_wrapper">
+  <div class="center">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <a href="http://pmkl.dev/app_dev.php/paper">
+            <h1>PMKL <span style=" color: #cf0000;">SE-JABODETABEK</span></h1>
+          </a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="main_menu_area">
+      <ul id="nav">           
+          <li><a href="http://pmkl.dev/app_dev.php/paper">Home</a></li>
+          <li><a href="{{url('front_profileorg')}}">Profile</a></li>
+          <li><a href="{{url('front_anggota')}}">Anggota</a>
+            <ul>
+              {{ render(controller('LayoutBundle:Paper:includetypeanggota')) }}
+            </ul>
+          </li>
+          <li><a href="{{url('front_pengumuman_org')}}">Pengumuman</a></li>
+          <li><a href="{{url('front_strukturorg')}}">Pengurus</a></li>
+          <li>
+            <a href="{{url('front_keuanganorg')}}">Keuangan</a>
+          </li>
+          <li><a href="{{url('front_forumorg')}}">Forum</a>
+            <ul>
+              {{ render(controller('LayoutBundle:Paper:includeforumstatus')) }}
+            </ul>
+          </li>
+          <li><a href="{{url('front_galleryorg')}}">Galery</a></li>
+          <li><a href="{{url('front_progkerjaorg')}}">P.Kerja</a></li>
+          
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <li><a href="{{url('fos_user_security_logout')}}">LOGOUT</a></li>
+        {% else %}
+        <li><a href="{{url('fos_user_security_login')}}">LOGIN</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    {% block slider %}
+    <div class="slider_area">
+      <div class="slider">
+        <ul class="bxslider">
+          {{ render(controller('LayoutBundle:Paper:includeslider')) }}
+        </ul>
+      </div>
+    </div>
+    {% endblock slider %}
+    <div class="content_area">
+    	{% block fullcontent %}
+			<div class="main_content floatleft">
+		      {% block contentkiri %}   
+		      {% endblock contentkiri %}
+		  	</div>
+		  	<div class="sidebar floatright">
+		      {% block contentkanan %}
+
+		      {% endblock contentkanan %}
+	      	</div> 
+	    {% endblock %}
+    </div>
+    <div class="footer_top_area">
+      <div class="inner_footer_top"> <img src="{{asset('paper/images/add3.png')}}" alt="" /> </div>
+    </div>
+    <div class="footer_bottom_area">
+      <div class="copyright_text">
+        <p>Copyright &copy; 2045 The News Reporter Inc. All rights reserved <a target="_blank" rel="nofollow" href="http://www.graphicsfuel.com/2045/10/wp-magazine-theme-template-psd/"></a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% block javascripts %}
+<script type="text/javascript" src="{{asset('paper/assets/js/jquery-min.js')}}"></script> 
+<script type="text/javascript" src="{{asset('paper/assets/js/bootstrap.min.js')}}"></script> 
+<script type="text/javascript" src="{{asset('paper/assets/js/jquery.bxslider.js')}}"></script> 
+<script type="text/javascript" src="{{asset('paper/assets/js/selectnav.min.js')}}"></script> 
+<script type="text/javascript">
+selectnav('nav', {
+    label: '-Navigation-',
+    nested: true,
+    indent: '-'
+});
+selectnav('f_menu', {
+    label: '-Navigation-',
+    nested: true,
+    indent: '-'
+});
+$('.bxslider').bxSlider({
+    mode: 'fade',
+    captions: true,
+    auto: true,
+    autoControls: true
+});
+</script>
+<script src="{{asset('comprof/js/chartorganisasi.js')}}"></script>
+<script src="{{asset('bundles/fosjsrouting/js/router.js')}}"></script>
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+{% endblock javascripts %}
+</body>
+</html>

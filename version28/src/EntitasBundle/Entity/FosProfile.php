@@ -8,9 +8,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * FosProfile
  *
- * @ORM\Table(name="fos_profile", indexes={@ORM\Index(name="jenis_kelamin", columns={"jenis_kelamin"}), @ORM\Index(name="type_anggotas", columns={"type_anggotas"})})
+ * @ORM\Table(name="fos_profile", indexes={@ORM\Index(name="jenis_kelamin", columns={"jenis_kelamin"}), @ORM\Index(name="type_pendidikan", columns={"type_pendidikan"}),@ORM\Index(name="type_anggotas", columns={"type_anggotas"})})
  * @ORM\Entity
  * @Vich\Uploadable
+ * @ORM\Entity(repositoryClass="EntitasBundle\Repositories\FosProfileRepository")
  */
 class FosProfile
 {
@@ -29,6 +30,13 @@ class FosProfile
      * @ORM\Column(name="nama_lengkap", type="string", length=255, nullable=false)
      */
     private $namaLengkap;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -96,6 +104,34 @@ class FosProfile
     private $imageName;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nama_sma", type="string", length=255, nullable=true)
+     */
+    private $namaSma;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jurusan_sma", type="string", length=255, nullable=true)
+     */
+    private $jurusanSma;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="masuk_sma", type="datetime", nullable=true)
+     */
+    private $masukSma;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="lulus_sma", type="datetime", nullable=true)
+     */
+    private $lulusSma;
+
+    /**
      * @var \FosKelamin
      *
      * @ORM\ManyToOne(targetEntity="FosKelamin",inversedBy="profiles")
@@ -119,6 +155,18 @@ class FosProfile
      * })
      */
     private $typeAnggotas;
+
+    /**
+     * @var \FosTypeanggota
+     *
+     * @ORM\ManyToOne(targetEntity="FosTypependidikan",inversedBy="profiles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_pendidikan", referencedColumnName="id")
+     * })
+     */
+    private $typePendidikan;
+
+
 
     /**
      * Constructor
@@ -166,6 +214,30 @@ class FosProfile
         return $this->namaLengkap;
     }
 
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return ForumPengumuman
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+    
     /**
      * Set tempatLahir
      *
@@ -468,5 +540,125 @@ class FosProfile
     public function getTypeAnggotas()
     {
         return $this->typeAnggotas;
+    }
+
+    /**
+     * Set namaSma
+     *
+     * @param string $namaSma
+     *
+     * @return FosProfile
+     */
+    public function setNamaSma($namaSma)
+    {
+        $this->namaSma = $namaSma;
+
+        return $this;
+    }
+
+    /**
+     * Get namaSma
+     *
+     * @return string
+     */
+    public function getNamaSma()
+    {
+        return $this->namaSma;
+    }
+
+    /**
+     * Set jurusanSma
+     *
+     * @param string $jurusanSma
+     *
+     * @return FosProfile
+     */
+    public function setJurusanSma($jurusanSma)
+    {
+        $this->jurusanSma = $jurusanSma;
+
+        return $this;
+    }
+
+    /**
+     * Get jurusanSma
+     *
+     * @return string
+     */
+    public function getJurusanSma()
+    {
+        return $this->jurusanSma;
+    }
+
+    /**
+     * Set masukSma
+     *
+     * @param \DateTime $masukSma
+     *
+     * @return FosProfile
+     */
+    public function setMasukSma($masukSma)
+    {
+        $this->masukSma = $masukSma;
+
+        return $this;
+    }
+
+    /**
+     * Get masukSma
+     *
+     * @return \DateTime
+     */
+    public function getMasukSma()
+    {
+        return $this->masukSma;
+    }
+
+    /**
+     * Set lulusSma
+     *
+     * @param \DateTime $lulusSma
+     *
+     * @return FosProfile
+     */
+    public function setLulusSma($lulusSma)
+    {
+        $this->lulusSma = $lulusSma;
+
+        return $this;
+    }
+
+    /**
+     * Get lulusSma
+     *
+     * @return \DateTime
+     */
+    public function getLulusSma()
+    {
+        return $this->lulusSma;
+    }
+
+    /**
+     * Set typePendidikan
+     *
+     * @param \EntitasBundle\Entity\FosTypependidikan $typePendidikan
+     *
+     * @return FosProfile
+     */
+    public function setTypePendidikan(\EntitasBundle\Entity\FosTypependidikan $typePendidikan = null)
+    {
+        $this->typePendidikan = $typePendidikan;
+
+        return $this;
+    }
+
+    /**
+     * Get typePendidikan
+     *
+     * @return \EntitasBundle\Entity\FosTypependidikan
+     */
+    public function getTypePendidikan()
+    {
+        return $this->typePendidikan;
     }
 }

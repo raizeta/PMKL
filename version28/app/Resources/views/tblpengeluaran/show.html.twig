@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tblpengeluaran</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tblPengeluaran.id }}</td>
+            </tr>
+            <tr>
+                <th>Namapemakai</th>
+                <td>{{ tblPengeluaran.namaPemakai }}</td>
+            </tr>
+            <tr>
+                <th>Namapenyerah</th>
+                <td>{{ tblPengeluaran.namaPenyerah }}</td>
+            </tr>
+            <tr>
+                <th>Jumlah</th>
+                <td>{{ tblPengeluaran.jumlah }}</td>
+            </tr>
+            <tr>
+                <th>Tanggalpenyerahan</th>
+                <td>{% if tblPengeluaran.tanggalpenyerahan %}{{ tblPengeluaran.tanggalpenyerahan|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Catatan</th>
+                <td>{{ tblPengeluaran.catatan }}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{{ tblPengeluaran.statusDisplay }}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if tblPengeluaran.createAt %}{{ tblPengeluaran.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if tblPengeluaran.updateAt %}{{ tblPengeluaran.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tblpengeluaran_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tblpengeluaran_edit', { 'id': tblPengeluaran.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

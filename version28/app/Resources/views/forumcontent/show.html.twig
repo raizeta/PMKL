@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Forumcontent</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ forumContent.id }}</td>
+            </tr>
+            <tr>
+                <th>Judulcontent</th>
+                <td>{{ forumContent.judulContent }}</td>
+            </tr>
+            <tr>
+                <th>Slugcontent</th>
+                <td>{{ forumContent.slugContent }}</td>
+            </tr>
+            <tr>
+                <th>Summarycontent</th>
+                <td>{{ forumContent.summaryContent }}</td>
+            </tr>
+            <tr>
+                <th>Isicontent</th>
+                <td>{{ forumContent.isiContent }}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ forumContent.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if forumContent.createAt %}{{ forumContent.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if forumContent.updateAt %}{{ forumContent.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('forumcontent_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('forumcontent_edit', { 'id': forumContent.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

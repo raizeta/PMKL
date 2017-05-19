@@ -1,0 +1,26 @@
+tblpemasukan_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:TblPemasukan:index" }
+    methods:  GET
+
+tblpemasukan_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:TblPemasukan:show" }
+    methods:  GET
+
+tblpemasukan_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:TblPemasukan:new" }
+    methods:  [GET, POST]
+
+tblpemasukan_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:TblPemasukan:edit" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+tblpemasukan_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:TblPemasukan:delete" }
+    methods:  DELETE

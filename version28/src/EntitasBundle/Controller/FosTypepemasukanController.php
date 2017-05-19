@@ -49,7 +49,7 @@ class FosTypepemasukanController extends Controller
             $em->persist($fosTypepemasukan);
             $em->flush();
 
-            return $this->redirectToRoute('fostypepemasukan_show', array('id' => $fosTypepemasukan->getId()));
+            return $this->redirectToRoute('fostypepemasukan_index');
         }
 
         return $this->render('fostypepemasukan/new.html.twig', array(

@@ -11,7 +11,7 @@ namespace EntitasBundle\Repositories;
 class FosStrukorgRepository extends \Doctrine\ORM\EntityRepository
 {
         
-        public function findAllArray()
+        public function findAllArray($slug)
         {
 			$query = $this->getEntityManager()
 			        		->createQuery('
@@ -26,14 +26,17 @@ class FosStrukorgRepository extends \Doctrine\ORM\EntityRepository
 	        									END
         									)as isAssistant,
 			        						prof.namaLengkap as name,prof.imageName as gambar,
-			        						prof.id as profileid
+			        						prof.id as profileid,prof.slug
 			        						FROM EntitasBundle:FosStrukorg mt
 			        						LEFT JOIN mt.parentTypejabatan pTj
 			        						INNER JOIN mt.typeJabatans c
 			        						INNER JOIN mt.pjJabatan prof
+			        						INNER JOIN mt.namaKegiatan nk
+			        						WHERE nk.slug = :slug
 			        						
 
 										  ')
+			        		->setParameter('slug',$slug)
 			        		->getArrayResult();
 			return $query;            
         }

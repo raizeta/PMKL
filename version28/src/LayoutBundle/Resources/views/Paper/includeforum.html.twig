@@ -1,0 +1,14 @@
+{% for forum in forums %}
+<div class="single_left_coloum floatleft"> 
+	<img src="{{asset('paper/images/single_featured.png')}}" alt="" />
+	<h3>
+		<a href="{{url('front_forumorg_detail',{'slug':forum.slugContent})}}">
+			{{forum.judulContent|upper}}
+		 </a>
+	</h3>
+	{{forum.summaryContent|truncate(100,true)|raw}}
+	<a href="{{url('front_forumorg_detail',{'slug':forum.slugContent})}}" class="readmore">
+		Read More
+	 </a> 
+</div>
+{% endfor %}

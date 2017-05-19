@@ -1,0 +1,74 @@
+<?php
+
+namespace EntitasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ForumStatus
+ *
+ * @ORM\Table(name="forum_status")
+ * @ORM\Entity
+ */
+class ForumStatus
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nama_status", type="text", length=65535, nullable=false)
+     */
+    private $namaStatus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deskripsi_status", type="text", length=65535, nullable=false)
+     */
+    private $deskripsiStatus;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status_display", type="boolean", nullable=false)
+     */
+    private $statusDisplay;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_at", type="datetime", nullable=false)
+     */
+    private $createAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="update_at", type="datetime", nullable=false)
+     */
+    private $updateAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ForumContent", mappedBy="statusContent")
+     */
+    protected $forumcontents;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createAt         = new \DateTime('now');
+        $this->updateAt         = new \DateTime('now');
+        $this->statusDisplay    = true;
+        $this->forumcontents    = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+}
+

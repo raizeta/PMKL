@@ -44,7 +44,13 @@ class FosProfileController extends Controller
         $form = $this->createForm('EntitasBundle\Form\FosProfileType', $fosProfile);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $data   = $form->getData();
+            $namal  = $data->getNamaLengkap();
+            $slug   = $this->get('entitas.slugger')->slugify($namal);
+            $fosProfile->setSlug($slug);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($fosProfile);
             $em->flush();
@@ -84,7 +90,13 @@ class FosProfileController extends Controller
             );
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) 
+        {
+            $data   = $editForm->getData();
+            $namal  = $data->getNamaLengkap();
+            $slug   = $this->get('entitas.slugger')->slugify($namal);
+            $fosProfile->setSlug($slug);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('fosprofile_index');

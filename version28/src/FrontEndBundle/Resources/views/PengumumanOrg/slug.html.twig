@@ -1,0 +1,89 @@
+{% extends "LayoutBundle:Paper:index.html.twig" %}
+{% block slider %}
+{% endblock %}
+{% block contentkiri %}
+	
+ 	{# <h2 class="title" align="center">PENGUMUMAN PMKL SE-JABODETABEK</h2> #}
+  	<div class="row">
+  		<div id="cv" class="instaFade">
+	<div class="mainDetails">
+		<div id="headshot" class="quickFade">
+			<img src="{{asset('adminlte/logoorg_pic/pmkl-logo.jpg')}}" alt="Alan Smith" />
+		</div>
+		
+		<div id="name">
+			{# <h1 class="quickFade delayTwo">Joe Bloggs</h1> #}
+			<h2 class="quickFade delayTwo">PMKL SE-JABODETABEK</h2>
+			<h7 class="quickFade delayThree"><i>Bersatu Untuk Maju,Bersatu Untuk Sukses</i></h7>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+	
+	<div id="mainArea" class="quickFade delayFive" style="min-height:700px;">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Pembukaan</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor metus, interdum at scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		<section>
+			<div class="sectionTitle">
+				<h1>Hari</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<article>
+					<h5>{{pengumuman.waktuDiadakan|date("l,d-m-Y H:s")}}</h5>
+					<p class="subDetails">Sampai Dengan Selesai</p>
+				</article>
+			</div>
+			<div class="clear"></div>
+		</section>
+		<section>
+			<div class="sectionTitle">
+				<h1>Tempat</h1>
+			</div>
+			<div class="sectionContent">
+				<article>
+					<h5>{{pengumuman.tempatDiadakan}}</h5>
+					<p class="subDetails">&nbsp;</p>
+				</article>
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Perihal</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<article>
+					{{pengumuman.topikPengumuman|raw}}
+				</article>
+			</div>
+			<div class="clear"></div>
+		</section>
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Penutup</h1>
+				</div>
+				<div class="sectionContent">
+					<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor metus, interdum at scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+	</div>
+</div>
+
+  	</div>
+{% endblock contentkiri %}

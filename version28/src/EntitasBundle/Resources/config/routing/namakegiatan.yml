@@ -1,0 +1,26 @@
+namakegiatan_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:NamaKegiatan:index" }
+    methods:  GET
+
+namakegiatan_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:NamaKegiatan:show" }
+    methods:  GET
+
+namakegiatan_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:NamaKegiatan:new" }
+    methods:  [GET, POST]
+
+namakegiatan_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:NamaKegiatan:edit" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+namakegiatan_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:NamaKegiatan:delete" }
+    methods:  DELETE

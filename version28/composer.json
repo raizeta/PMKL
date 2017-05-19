@@ -13,6 +13,7 @@
     },
     "require": {
         "php": ">=5.3.9",
+        "cloudinary/cloudinary_php": "dev-master",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/orm": "^2.4.8",
         "egeloen/ckeditor-bundle": "^5.0",
@@ -23,6 +24,7 @@
         "knplabs/knp-menu-bundle": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.5",
         "knplabs/knp-snappy-bundle": "~1.4",
+        "league/flysystem-dropbox": "^1.0",
         "liip/imagine-bundle": "^1.7",
         "liuggio/excelbundle": "^2.1",
         "sensio/distribution-bundle": "~4.0",

@@ -1,0 +1,101 @@
+{% extends "LayoutBundle:News:index.html.twig" %}
+{% block contentkiri %}
+<div class="col-md-9">
+<div class="row">
+	<div class="col-md-3" style="padding-left:5px;">
+      {{ render(controller('LayoutBundle:News:includetypeanggota')) }}
+	</div>	
+	<div class="col-md-9 total-news">
+	   {% if slug is defined %}
+	   {% set panjang = 0 %}
+	   {% for fosProfile in fosProfiles %}
+	   	{% if fosProfile.getTypeAnggotas().slug == slug %}
+	   	 {% set panjang = panjang + 1 %}
+	   	<div class="col-md-4">
+			<div class="panel widget">
+			  	<div style="background-image: url('{{asset('comprof/images/images-background.jpg')}}')" class="panel-body text-center bg-center">
+			     <div class="row row-table">
+			        <div class="col-xs-12 text-white">
+			        	{% if fosProfile.imageName %}
+			        		<img src="{{('adminlte/anggota_pic/'~ fosProfile.imageName)| imagine_filter('anggota_front')}}" alt="" class="img-thumbnail img-circle thumb128" style="height:100px">
+			        	{% else %}
+			           		<img src="{{asset('comprof/images/pmkl.png')}}" alt="Image" class="img-thumbnail img-circle thumb128" style="height:100px">
+			       		{% endif %}
+			           <h5 style="color:#dadee2">
+			           	<a href="{{url('front_anggota_profile',{'slug':fosProfile.slug})}}">
+			           		{{ fosProfile.namaLengkap }}
+			           	</a>
+			           	</h5>
+			        </div>
+			     </div>
+			  </div>
+			  <div class="list-group">
+			     <a href="#" class="list-group-item">
+			        <span class="pull-right"></span>
+			        radumta@gmail.com</a>
+			     <a href="#" class="list-group-item">
+			        <span class="pull-right"><i class="fa fa-bullhorn"></i></span>
+			        {{ fosProfile.nomorHandphone }}</a>
+		        {# <a href="#" class="list-group-item">
+			        <span class="pull-right"><i class="fa fa-hourglass"></i></span>
+			        Newbie
+			    </a>
+			    <a href="#" class="list-group-item">
+			        <span class="pull-right"><i class="fa fa-calendar"></i></span>
+			        12 Maret 2017
+			    </a> #}
+			  </div>
+			</div>
+	   	</div>
+	    {% endif %}
+	   {% endfor %}
+	   {% if panjang == 0 %}
+	   		<div class="col-md-12">
+	   			<div class="panel widget">
+					<img src="{{asset('news/images/404.png')}}" alt="Image" style="height:auto;width:100%;top:0px">
+				</div>
+	   		</div>
+	   {% endif %}
+	   {% else %}
+	   	{% for fosProfile in fosProfiles %}
+		   	<div class="col-md-4">
+				<div class="panel widget">
+				  	<div style="background-image: url('{{asset('comprof/images/images-background.jpg')}}')" class="panel-body text-center bg-center">
+				     <div class="row row-table">
+				        <div class="col-xs-12 text-white">
+				        	{% if fosProfile.imageName %}
+				        		<img src="{{('adminlte/anggota_pic/'~ fosProfile.imageName)| imagine_filter('anggota_front')}}" alt="" class="img-thumbnail img-circle thumb128" style="height:100px">
+				        	{% else %}
+				           		<img src="{{asset('comprof/images/pmkl.png')}}" alt="Image" class="img-thumbnail img-circle thumb128" style="height:100px">
+				       		{% endif %}
+				           <h5 style="color:#dadee2">
+				           	<a href="{{url('front_anggota_profile',{'slug':fosProfile.slug})}}">
+			           		{{ fosProfile.namaLengkap }}
+			           	</a></h5>
+				        </div>
+				     </div>
+				  </div>
+				  <div class="list-group">
+				     <a href="#" class="list-group-item">
+				        <span class="pull-right"></span>
+				        radumta@gmail.com</a>
+				     <a href="#" class="list-group-item">
+				        <span class="pull-right"><i class="fa fa-bullhorn"></i></span>
+				        {{ fosProfile.nomorHandphone }}</a>
+			        {# <a href="#" class="list-group-item">
+				        <span class="pull-right"><i class="fa fa-hourglass"></i></span>
+				        Newbie
+				    </a>
+				    <a href="#" class="list-group-item">
+				        <span class="pull-right"><i class="fa fa-calendar"></i></span>
+				        12 Maret 2017
+				    </a> #}
+				  </div>
+				</div>
+		   	</div>
+	    {% endfor %}
+	   {% endif %}
+	</div>
+</div>
+</div>
+{% endblock contentkiri %}

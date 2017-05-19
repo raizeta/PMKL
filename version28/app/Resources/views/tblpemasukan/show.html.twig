@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tblpemasukan</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tblPemasukan.id }}</td>
+            </tr>
+            <tr>
+                <th>Catatan</th>
+                <td>{{ tblPemasukan.catatan }}</td>
+            </tr>
+            <tr>
+                <th>Jumlahpemasukan</th>
+                <td>{{ tblPemasukan.jumlahPemasukan }}</td>
+            </tr>
+            <tr>
+                <th>Diterimaoleh</th>
+                <td>{{ tblPemasukan.diterimaOleh }}</td>
+            </tr>
+            <tr>
+                <th>Diterimatanggal</th>
+                <td>{% if tblPemasukan.diterimaTanggal %}{{ tblPemasukan.diterimaTanggal|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{{ tblPemasukan.statusDisplay }}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if tblPemasukan.createAt %}{{ tblPemasukan.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if tblPemasukan.updateAt %}{{ tblPemasukan.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tblpemasukan_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tblpemasukan_edit', { 'id': tblPemasukan.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

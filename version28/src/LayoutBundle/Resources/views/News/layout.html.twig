@@ -1,0 +1,186 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>PMKL</title>
+
+
+
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{{asset('news/css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{asset('news/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+<link href="{{asset('news/css/popuo-box.css')}}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{{asset('news/css/flexslider.css')}}" type="text/css" media="screen" />
+<script src="{{asset('news/js/jquery.min.js')}}"></script>
+<script src="{{asset('news/js/jquery.leanModal.min.js')}}"></script>
+<script type="application/x-javascript"> 
+  addEventListener("load", function() 
+  { 
+    setTimeout(hideURLbar, 0); 
+  }, false); 
+  function hideURLbar()
+  { 
+    window.scrollTo(0,1); 
+  } 
+</script>
+
+<script src="{{asset('news/js/jquery.magnific-popup.js')}}" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">  
+  <div class="news-paper">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <a href="{{url('news_end_index')}}">
+            <h1>PMKL <span>Se-Jabodetabek</span></h1>
+          </a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="clearfix"></div>
+    </div>
+    <span class="menu"></span>
+    <div class="menu-strip">
+      <nav class="navigation" role="navigation">
+      <ul class="primary-nav">           
+          <li><a href="{{url('news_end_index')}}">Home</a></li>
+          <li><a href="{{url('front_profileorg')}}">Profile</a></li>
+          <li><a href="{{url('front_anggota')}}">Anggota</a></li>
+          <li><a href="{{url('front_pengumuman_org')}}">Pengumuman</a></li>
+          <li><a href="{{url('front_strukturorg')}}">Pengurus</a></li>
+          <li><a href="{{url('front_keuanganorg')}}">Keuangan</a></li>
+          <li><a href="{{url('front_galleryorg')}}">Galery</a></li>
+          <li><a href="{{url('front_progkerjaorg')}}">P.Kerja</a></li>
+          <li><a href="{{url('front_forumorg')}}">Forum</a></li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <li><a href="{{url('fos_user_security_logout')}}">LOGOUT</a></li>
+        {% else %}
+        <li><a href="{{url('fos_user_security_login')}}">LOGIN</a></li>
+        {% endif %}
+      </ul>
+      </nav>
+    </div>
+    <div class="clearfix"></div>
+    <div class="main-content">
+    {% block fullcontent %}
+      {% block contentkiri %}   
+      {% endblock contentkiri %}
+      {% block contentkanan %}  
+      {% endblock contentkanan %} 
+    {% endblock %}
+    <div class="clearfix"></div>
+    </div>
+    {% block footer %}
+      <div class="footer text-center">
+        <div class="bottom-menu">
+          <ul>                 
+            <li><a href="index.html">World  News</a></li> |
+            <li><a href="sports.html">Sports</a></li> |
+            <li><a href="tech.html">Techology</a></li> |
+            <li><a href="business.html">Business</a></li> |
+            <li><a href="movies.html">Movies</a></li> |
+            <li><a href="movies.html">Entertainment</a></li> |
+            <li><a href="books.html">Books</a></li> |
+            <li><a href="movies.html">Culture</a></li> |
+            <li><a href="classifieds.html">Classifieds</a></li> |
+            <li><a href="blog.html">Blogs</a></li>              
+          </ul>
+        </div>
+        <div class="copyright text-center">
+          <p>The News Reporter &copy; 2015 All rights reserved | Template by  <a href="http://w3layouts.com">W3layouts</a></p>
+        </div>
+      </div>
+    {% endblock footer %}
+  </div>
+</div>
+{% block javascripts %}
+<script src="{{asset('news/js/responsiveslides.min.js')}}"></script>
+ <script>
+  $(function () 
+  {
+    $("#conference-slider").responsiveSlides({
+    auto: true,
+    manualControls: '#slider3-pager',
+    });
+  });
+</script>
+<script type="text/javascript">
+ $(window).load(function()
+{
+  $("#flexiselDemo").flexisel({
+    visibleItems: 3,
+    animationSpeed: 1000,
+    autoPlay: true,
+    autoPlaySpeed: 3000,        
+    pauseOnHover: true,
+    enableResponsiveBreakpoints: true,
+    responsiveBreakpoints: { 
+      portrait: { 
+        changePoint:480,
+        visibleItems: 2
+      }, 
+      landscape: { 
+        changePoint:640,
+        visibleItems: 2
+      },
+      tablet: { 
+        changePoint:768,
+        visibleItems: 3
+      }
+    }
+  });
+  
+ });
+</script>
+ <script type="text/javascript" src="{{asset('news/js/jquery.flexisel.js')}}"></script>
+<script>
+  $( "span.menu" ).click(function() 
+  {
+    $( ".menu-strip" ).slideToggle( "slow", function() 
+    {
+      // Animation complete.
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(window).load(function() 
+  {
+    $("#flexiselDemo1").flexisel({
+      visibleItems: 6,
+      animationSpeed: 1000,
+      autoPlay: true,
+      autoPlaySpeed: 3000,        
+      pauseOnHover: true,
+      enableResponsiveBreakpoints: true,
+      responsiveBreakpoints: { 
+        portrait: { 
+          changePoint:480,
+          visibleItems: 2
+        }, 
+        landscape: { 
+          changePoint:640,
+          visibleItems: 2
+        },
+        tablet: { 
+          changePoint:768,
+          visibleItems: 3
+        }
+      }
+    });
+  });
+</script>
+<script src="{{asset('comprof/js/chartorganisasi.js')}}"></script>
+<script src="{{asset('bundles/fosjsrouting/js/router.js')}}"></script>
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+{% endblock javascripts %}
+</body>
+</html>

@@ -1,28 +1,22 @@
-{% extends "LayoutBundle:FrontEnd:index.html.twig" %}
-
-{% block title %}FrontEndBundle:StrukturOrg:index{% endblock %}
+{% extends "LayoutBundle:Paper:layout.html.twig" %}
 {% block slider %}
-{% endblock slider %}
-{% block content %}
-<section id="services" class="services service-section">
-{#     <div class="container">
-      <div class="row"> #}
-
-    <div id="myDiagramDiv" style="width:100%;border: solid 0px black;height:400px"></div>
- 
-{#     </div> #}
-{#   </div> #}
-</section>
-{% endblock content %}
+{% endblock %}
+{% block fullcontent %}   
+<div class="col-md-12 total-news">
+  <h2 class="title" align="center">STRUKTUR ORGANISASI BPH PMKL SE-JABODETABEK 2017</h2>
+  <div id="myDiagramDiv" style="width:100%;border: solid 0px black;height:400px"></div>
+</div>
+{% endblock fullcontent %}
 
 {% block javascripts %}
   {{parent()}}
   <script>
   $(document).ready(function()
   { 
+      var slug = {{ slug|json_encode|raw }};
       var jsonDatasales = $.ajax
       ({
-            url: Routing.generate('fosstrukorg_indexjson'),
+            url: Routing.generate('fosstrukorg_indexjson',{slug:slug}),
             type: "GET",
             dataType:"json",
             async: false
@@ -34,6 +28,8 @@
       myDiagram =
         $xxx(go.Diagram, "myDiagramDiv", // must be the ID or reference to div
           {
+            initialDocumentSpot: go.Spot.TopCenter,
+            initialViewportSpot: go.Spot.TopCenter,
             initialContentAlignment: go.Spot.Center,
             maxSelectionCount: 1, // users can select only one part at a time
             validCycle: go.Diagram.CycleDestinationTree, // make sure users can only create trees
@@ -183,7 +179,7 @@
                 if (node !== null) 
                 {
                   var thisemp = node.data;
-                  var urlredirect = Routing.generate('fosstrukorg_index');
+                  var urlredirect = Routing.generate('front_anggota_profile',{slug:thisemp.slug});
                   window.open(urlredirect,'_blank');
                 }
               }
@@ -202,7 +198,6 @@
         "nodeDataArray": myData
       }
       myDiagram.model = go.Model.fromJson(data);
-
   });
 </script>
 {% endblock javascripts %}

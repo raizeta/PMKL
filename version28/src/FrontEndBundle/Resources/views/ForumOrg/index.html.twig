@@ -1,7 +1,89 @@
-{% extends "::base.html.twig" %}
-
-{% block title %}FrontEndBundle:ForumOrg:index{% endblock %}
-
-{% block body %}
-<h1>Welcome to the ForumOrg:index page</h1>
+{% extends "LayoutBundle:Paper:index.html.twig" %}
+{% block slider %}
 {% endblock %}
+{# {% block contentkiri %}
+	<div class="col-md-9">
+		{% for forum in forums %}
+		<div class="row">
+			<div class="col-md-12">
+				<a href="{{url('front_forumorg_slug',{'slug':forum.slugContent})}}">
+					{{forum.judulContent|upper}}
+				 </a>
+				{{forum.summaryContent|truncate(400,true)|raw}}
+				<a href="{{url('front_forumorg_slug',{'slug':forum.slugContent})}}">
+					Read More
+				</a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	
+{% endblock contentkiri %} #}
+{% block contentkiri %}
+	<h2 class="title">FORUM PMKL SE-JABODETABEK</h2>
+	<div class="container">
+		<div class="row" >
+			<div class="panel panel-primary">
+	          	<div class="panel-heading"></div>
+	          	<div class="panel-body">
+	          		{% if forums|length > 0 %}
+					<div class="table-responsive">
+					  <table class="table table-bordered table-striped table-hover table-condensed">
+					    <thead>
+					    	<th>Nomor</th>
+					    	<th>Judul</th>
+					    	<th>Category</th>
+					    	<th>Status</th>
+					    	<th>Jlh Komentar</th>
+					    </thead>
+					    <tbody>
+					    	{% if slug is defined %}
+					    		{% for forum in forums %}
+					    			{% if (forum.getStatusContent().slug == slug) %}
+								    	<tr>
+								    		<td>{{loop.index}}</td>
+								    		<td>
+								    			<a href="{{url('front_forumorg_detail',{'slug':forum.slugContent})}}">
+													{{forum.judulContent|upper}}
+											 	</a>
+								    		</td>
+								    		<td>{{forum.getForumCategorys.namaCategory}}</td>
+								    		<td>{{forum.getStatusContent().namaStatus}}</td>
+								    		<td align="center">
+					                          {% if forum.getKomentars() %}
+					                              {{ forum.getKomentars()|length }}
+					                          {% endif %}
+					                        </td>
+								    	</tr>
+						    		{% endif %}
+						    	{% endfor %}
+							{% else %}
+						    	{% for forum in forums %}
+						    	<tr>
+						    		<td>{{loop.index}}</td>
+						    		<td>
+						    			<a href="{{url('front_forumorg_detail',{'slug':forum.slugContent})}}">
+											{{forum.judulContent|upper}}
+									 	</a>
+						    		</td>
+						    		<td>{{forum.getForumCategorys.namaCategory}}</td>
+						    		<td>{{forum.getStatusContent().namaStatus}}</td>
+						    		<td align="center">
+			                          {% if forum.getKomentars() %}
+			                              {{ forum.getKomentars()|length }}
+			                          {% endif %}
+			                        </td>
+						    	</tr>
+						    	{% endfor %}
+						    {% endif %}
+					    </tbody>
+					  </table>
+					</div>
+					{% endif %}
+				</div>
+				<div class="panel-footer" style="background-color:#428bca;border-color: #428bca;">
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock contentkiri %}

@@ -38,10 +38,10 @@ class FosStrukorgController extends Controller
      * Lists all fosStrukorg entities.
      *
      */
-    public function indexJsonAction(Request $request)
+    public function indexJsonAction(Request $request,$slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository('EntitasBundle:FosStrukorg')->findAllArray();
+        $query = $em->getRepository('EntitasBundle:FosStrukorg')->findAllArray($slug);
         // foreach($entities as $categoryList)
         // {
         //     $data[] = array

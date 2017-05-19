@@ -32,3 +32,43 @@ entitas_typeanggota:
 entitas_typejabatan:
   resource: "@EntitasBundle/Resources/config/routing/fostypejabatan.yml"
   prefix:   /typejabatan
+
+entitas_typependidikan:
+  resource: "@EntitasBundle/Resources/config/routing/fostypependidikan.yml"
+  prefix:   /typependidikan
+
+entitas_forumcategory:
+  resource: "@EntitasBundle/Resources/config/routing/forumcategory.yml"
+  prefix:   /forumcategory
+
+entitas_forumstatus:
+  resource: "@EntitasBundle/Resources/config/routing/forumstatus.yml"
+  prefix:   /forumstatus
+
+entitas_forumcontent:
+  resource: "@EntitasBundle/Resources/config/routing/forumcontent.yml"
+  prefix:   /forumcontent
+
+entitas_forumkomentar:
+  resource: "@EntitasBundle/Resources/config/routing/forumkomentar.yml"
+  prefix:   /forumkomentar
+
+entitas_forumpengumuman:
+  resource: "@EntitasBundle/Resources/config/routing/forumpengumuman.yml"
+  prefix:   /forumpengumuman
+
+entitas_slider:
+  resource: "@EntitasBundle/Resources/config/routing/fosslider.yml"
+  prefix:   /slider
+
+entitas_pemasukan:
+  resource: "@EntitasBundle/Resources/config/routing/tblpemasukan.yml"
+  prefix:   /tblpemasukan
+
+entitas_pengeluaran:
+  resource: "@EntitasBundle/Resources/config/routing/tblpengeluaran.yml"
+  prefix:   /tblpengeluaran
+
+entitas_namakegiatan:
+  resource: "@EntitasBundle/Resources/config/routing/namakegiatan.yml"
+  prefix:   /namakegiatan

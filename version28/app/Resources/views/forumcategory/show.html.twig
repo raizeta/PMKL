@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Forumcategory</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ forumCategory.id }}</td>
+            </tr>
+            <tr>
+                <th>Namacategory</th>
+                <td>{{ forumCategory.namaCategory }}</td>
+            </tr>
+            <tr>
+                <th>Deskripsicategory</th>
+                <td>{{ forumCategory.deskripsiCategory }}</td>
+            </tr>
+            <tr>
+                <th>Statusdisplay</th>
+                <td>{% if forumCategory.statusDisplay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if forumCategory.createAt %}{{ forumCategory.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if forumCategory.updateAt %}{{ forumCategory.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('forumcategory_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('forumcategory_edit', { 'id': forumCategory.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * FosStrukorg
  *
- * @ORM\Table(name="fos_strukorg", indexes={@ORM\Index(name="parent_jabatan", columns={"parent_typejabatan"}), @ORM\Index(name="pj_jabatan", columns={"pj_jabatan"}), @ORM\Index(name="type_jabatans", columns={"type_jabatans"})})
+ * @ORM\Table(name="fos_strukorg", indexes={@ORM\Index(name="parent_jabatan", columns={"parent_typejabatan"}), @ORM\Index(name="pj_jabatan", columns={"pj_jabatan"}), @ORM\Index(name="type_jabatans", columns={"type_jabatans"}), @ORM\Index(name="nama_kegiatan", columns={"nama_kegiatan"}),})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="EntitasBundle\Repositories\FosStrukorgRepository")
  */
@@ -28,7 +28,7 @@ class FosStrukorg
      * @ORM\Column(name="nama_jabatan", type="string", length=255, nullable=true)
      */
     private $namaJabatan;
-
+    
     /**
      * @var boolean
      *
@@ -42,13 +42,6 @@ class FosStrukorg
      * @ORM\Column(name="icon_pejabat", type="string", length=50, nullable=false)
      */
     private $iconPejabat;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nama_kegiatan", type="string", length=255, nullable=false)
-     */
-    private $namaKegiatan;
 
     /**
      * @var \DateTime
@@ -99,6 +92,17 @@ class FosStrukorg
      * })
      */
     private $typeJabatans;
+
+
+    /**
+     * @var \NamaKegiatan
+     *
+     * @ORM\ManyToOne(targetEntity="NamaKegiatan",inversedBy="strukorgs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nama_kegiatan", referencedColumnName="id")
+     * })
+     */
+    private $namaKegiatan;
 
     /**
      * Constructor
@@ -194,30 +198,6 @@ class FosStrukorg
     public function getIconPejabat()
     {
         return $this->iconPejabat;
-    }
-
-    /**
-     * Set namaKegiatan
-     *
-     * @param string $namaKegiatan
-     *
-     * @return FosStrukorg
-     */
-    public function setNamaKegiatan($namaKegiatan)
-    {
-        $this->namaKegiatan = $namaKegiatan;
-
-        return $this;
-    }
-
-    /**
-     * Get namaKegiatan
-     *
-     * @return string
-     */
-    public function getNamaKegiatan()
-    {
-        return $this->namaKegiatan;
     }
 
     /**
@@ -372,5 +352,29 @@ class FosStrukorg
     public function getTypeJabatans()
     {
         return $this->typeJabatans;
+    }
+
+    /**
+     * Set namaKegiatan
+     *
+     * @param \EntitasBundle\Entity\NamaKegiatan $namaKegiatan
+     *
+     * @return FosStrukorg
+     */
+    public function setNamaKegiatan(\EntitasBundle\Entity\NamaKegiatan $namaKegiatan = null)
+    {
+        $this->namaKegiatan = $namaKegiatan;
+
+        return $this;
+    }
+
+    /**
+     * Get namaKegiatan
+     *
+     * @return \EntitasBundle\Entity\NamaKegiatan
+     */
+    public function getNamaKegiatan()
+    {
+        return $this->namaKegiatan;
     }
 }

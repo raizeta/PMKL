@@ -1,0 +1,21 @@
+{{form_start(edit_form, {'attr': {'id': 'editForumstatus'}})}}
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-light-blue">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Forumstatus</h4>
+      </div>
+      <div class="modal-body">
+        {% for formx in edit_form %}
+          <div class="form-group">
+            {{form_widget(formx)}}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="modal-footer bg-light-blue">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </div>
+  </div>
+{{form_end(edit_form)}}

@@ -1,0 +1,26 @@
+tblpengeluaran_index:
+    path:     /
+    defaults: { _controller: "EntitasBundle:TblPengeluaran:index" }
+    methods:  GET
+
+tblpengeluaran_show:
+    path:     /{id}/show
+    defaults: { _controller: "EntitasBundle:TblPengeluaran:show" }
+    methods:  GET
+
+tblpengeluaran_new:
+    path:     /new
+    defaults: { _controller: "EntitasBundle:TblPengeluaran:new" }
+    methods:  [GET, POST]
+
+tblpengeluaran_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EntitasBundle:TblPengeluaran:edit" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+tblpengeluaran_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EntitasBundle:TblPengeluaran:delete" }
+    methods:  DELETE

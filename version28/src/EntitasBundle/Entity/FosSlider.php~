@@ -1,0 +1,93 @@
+<?php
+
+namespace EntitasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+/**
+ * FosSlider
+ *
+ * @ORM\Table(name="fos_slider")
+ * @ORM\Entity
+ * @Vich\Uploadable
+ */
+class FosSlider
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="judul", type="string", length=255, nullable=false)
+     */
+    private $judul;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="summary_slider", type="text", length=65535, nullable=true)
+     */
+    private $summarySlider;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content_slider", type="text", length=65535, nullable=true)
+     */
+    private $contentSlider;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_name", type="string", length=255, nullable=false)
+     */
+    private $imageName;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="slider_image", fileNameProperty="imageName")
+     * 
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status_display", type="boolean", nullable=false)
+     */
+    private $statusDisplay;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_at", type="datetime", nullable=false)
+     */
+    private $createAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="update_at", type="datetime", nullable=false)
+     */
+    private $updateAt;
+
+
+}
+

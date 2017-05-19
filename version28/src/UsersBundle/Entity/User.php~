@@ -46,10 +46,22 @@ class User extends BaseUser
      */
     private $linkedinID;
     
+    /**
+     * @ORM\OneToMany(targetEntity="EntitasBundle\Entity\ForumContent", mappedBy="authors")
+     */
+    protected $forumcontents;
+
+    /**
+     * @ORM\OneToMany(targetEntity="EntitasBundle\Entity\ForumKomentar", mappedBy="komentator")
+     */
+    protected $komentars;
+
     public function __construct()
     {
-    parent::__construct();
-    // your own logic
+        parent::__construct();
+        $this->forumcontents    = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->komentars        = new \Doctrine\Common\Collections\ArrayCollection();
+        // your own logic
     }
 
     /**
@@ -60,5 +72,131 @@ class User extends BaseUser
     public function getId()
     {
     return $this->id;
+    }
+
+    /**
+     * Set facebookID
+     *
+     * @param string $facebookID
+     * @return User
+     */
+    public function setFacebookID($facebookID)
+    {
+        $this->facebookID = $facebookID;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookID
+     *
+     * @return string 
+     */
+    public function getFacebookID()
+    {
+        return $this->facebookID;
+    }
+
+    /**
+     * Set googleID
+     *
+     * @param string $googleID
+     * @return User
+     */
+    public function setGoogleID($googleID)
+    {
+        $this->googleID = $googleID;
+
+        return $this;
+    }
+
+    /**
+     * Get googleID
+     *
+     * @return string 
+     */
+    public function getGoogleID()
+    {
+        return $this->googleID;
+    }
+
+    /**
+     * Set twitterID
+     *
+     * @param string $twitterID
+     * @return User
+     */
+    public function setTwitterID($twitterID)
+    {
+        $this->twitterID = $twitterID;
+
+        return $this;
+    }
+
+    /**
+     * Get twitterID
+     *
+     * @return string 
+     */
+    public function getTwitterID()
+    {
+        return $this->twitterID;
+    }
+
+    /**
+     * Set linkedinID
+     *
+     * @param string $linkedinID
+     * @return User
+     */
+    public function setLinkedinID($linkedinID)
+    {
+        $this->linkedinID = $linkedinID;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinID
+     *
+     * @return string 
+     */
+    public function getLinkedinID()
+    {
+        return $this->linkedinID;
+    }
+
+    /**
+     * Add forumcontent
+     *
+     * @param \EntitasBundle\Entity\ForumContent $forumcontent
+     *
+     * @return User
+     */
+    public function addForumcontent(\EntitasBundle\Entity\ForumContent $forumcontent)
+    {
+        $this->forumcontents[] = $forumcontent;
+
+        return $this;
+    }
+
+    /**
+     * Remove forumcontent
+     *
+     * @param \EntitasBundle\Entity\ForumContent $forumcontent
+     */
+    public function removeForumcontent(\EntitasBundle\Entity\ForumContent $forumcontent)
+    {
+        $this->forumcontents->removeElement($forumcontent);
+    }
+
+    /**
+     * Get forumcontents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getForumcontents()
+    {
+        return $this->forumcontents;
     }
 }

@@ -1,0 +1,55 @@
+{# {% for row in pengumuman|batch(2, '') %}
+{% if (loop.index) == 1 %}
+<div class="left-tech-news">
+	{% for column in row %}
+	{% if (loop.index) == 1 %}
+	<div class="tech-news-grid span_66">
+		<a href="singlepage.html">{{column.judulPengumuman}}</a>
+		{{column.isiPengumuman|raw}}
+		<p>Tempat <a href="#">{{column.tempatDiadakan}} </a>  |  {{column.waktuDiadakan|date}}</p>
+	</div>
+	{% else %}
+	<div class="tech-news-grid">
+		<a href="singlepage.html">{{column.judulPengumuman}}</a>
+		{{column.isiPengumuman|raw}}
+		<p>Tempat <a href="#">{{column.tempatDiadakan}} </a>  |  {{column.waktuDiadakan|date}}</p>
+	</div>
+	{% endif %}
+	{% endfor %}
+</div>
+{% else %}
+<div class="right-tech-news">
+	{% for column in row %}
+	{% if (loop.index) == 1 %}
+	<div class="tech-news-grid span_66">
+		<a href="singlepage.html">{{column.judulPengumuman}}</a>
+		{{column.isiPengumuman|raw}}
+		<p>Tempat <a href="#">{{column.tempatDiadakan}} </a>  |  {{column.waktuDiadakan|date}}</p>
+	</div>
+	{% else %}
+	{% if column is not empty %}
+	<div class="tech-news-grid">
+		<a href="singlepage.html">{{column.judulPengumuman}}</a>
+		{{column.isiPengumuman|raw}}
+		<p>Tempat <a href="#">{{column.tempatDiadakan}} </a>  |  {{column.waktuDiadakan|date}}</p>
+	</div>
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+</div>
+{% endif %}
+{% endfor %} #}
+
+<div class="popular-news">
+	{% for column in pengumuman %}
+	<div class="popular-grid">
+		<p>
+			<a href="{{url('front_pengumuman_org_slug',{'slug':column.slug})}}" style="text-decoration:none">
+			{{column.judulPengumuman}}
+	 		</a>
+	 	</p>
+		<i>{{column.waktuDiadakan|date}} di {{column.tempatDiadakan}}</i>
+		<p>{{column.topikPengumuman|raw}}</p>
+	</div>
+	{% endfor %}
+</div>

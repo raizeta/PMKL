@@ -37,12 +37,8 @@
                 <tbody>
                 
                 {% for fosProfile in fosProfiles %}
-                    <tr>
-                        <td>
-                          <a href="{{ path('fosprofile_show', { 'id': fosProfile.id }) }}">
-                            {{ fosProfile.id }}
-                          </a>
-                        </td>
+                    <tr {% if loop.index is odd %}class="success"{% endif %}>
+                        <td>{{loop.index + ( (currentpage -1) * itemperpage ) }}</td>
                         <td>
                           {% if fosProfile.imageName %}
                             <img src="{{('adminlte/anggota_pic/'~ fosProfile.imageName)| imagine_filter('anggota_thumb')}}" alt="">
@@ -96,11 +92,131 @@
                 <h4 class="modal-title">New FosProfile</h4>
               </div>
               <div class="modal-body">
-                {% for formx in form %}
-                <div class="form-group">
-                    {{form_widget(formx)}}
+                <div class="row">
+                  <div class="col-md-12">
+                    
+                    <div class="nav-tabs-custom">
+                      <ul class="nav nav-tabs">
+                        <li class="active">
+                          <a href="#tab_1" data-toggle="tab" aria-expanded="true">
+                            Basic
+                          </a>
+                        </li>
+                        <li class="">
+                          <a href="#tab_2" data-toggle="tab" aria-expanded="true">
+                            Alamat
+                          </a>
+                        </li>
+                        <li class="">
+                          <a href="#tab_3" data-toggle="tab" aria-expanded="true">
+                            Orang Tua
+                          </a>
+                        </li>
+                        <li class="">
+                          <a href="#tab_4" data-toggle="tab" aria-expanded="true">
+                            Pendidikan
+                          </a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                          <div class="form-group">
+                            <label>Nama Lengkap</label>
+                              {{form_widget(form.namaLengkap)}}
+                          </div>
+                          <div class="form-group">
+                            <label>Tempat Lahir</label>
+                              {{form_widget(form.tempatLahir)}}
+                          </div>
+                          <div class="form-group">
+                            <label>Tanggal Lahir</label>
+                              {{form_widget(form.tanggalLahir)}}
+                          </div>
+                          <div class="form-group">
+                            <label>Jenis Kelamin</label>
+                              {{form_widget(form.jenisKelamin)}}
+                          </div>
+                        </div>
+                          <div class="tab-pane" id="tab_2">
+                            <div class="form-group">
+                              <label>Alamat Sekarang</label>
+                                {{form_widget(form.alamatSekarang)}}
+                            </div>
+                            <div class="form-group">
+                              <label>No Telepon</label>
+                                {{form_widget(form.nomorHandphone)}}
+                            </div>
+                            <div class="form-group">
+                              <label>Status Keanggotan</label>
+                                {{form_widget(form.typeAnggotas)}}
+                            </div>
+                            <div class="form-group">
+                                {{form_widget(form.imageFile)}}
+                            </div>
+                            <div class="form-group">
+                              <label>Status Display</label>
+                                {{form_widget(form.statusDisplay)}}
+                            </div>
+                          </div>
+                        <div class="tab-pane" id="tab_3">
+                          <fieldset class="scheduler-border">
+                              <legend class="scheduler-border">Data Ayah</legend>
+                              <div class="form-group">
+                                <label>Nama Ayah</label>
+                                  <input class="form-control" type="text" placeholder="Default input">
+                              </div>
+                              <div class="form-group">
+                                <label>Tanggal Lahir</label>
+                                  <input class="form-control" type="date" placeholder="Default input">
+                              </div>
+                            </fieldset>
+                            <fieldset class="scheduler-border">
+                              <legend class="scheduler-border">Data Ibu</legend>
+                              <div class="form-group">
+                                <label>Nama Ibu</label>
+                                  <input class="form-control" type="text" placeholder="Default input">
+                              </div>
+                              <div class="form-group">
+                                <label>Tanggal Lahir</label>
+                                  <input class="form-control" type="date" placeholder="Default input">
+                              </div>
+                            </fieldset>
+                        </div>
+                        <div class="tab-pane" id="tab_4">
+                          <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">Pendidikan Terakhir</legend>
+                            <div class="form-group">
+                              <label>Nama Instansi</label>
+                                {{form_widget(form.namaSma)}}
+                            </div>
+                            <div class="form-group">
+                              <label>Type Pendidikan</label>
+                                {{form_widget(form.typePendidikan)}}
+                            </div>
+                            <div class="form-group">
+                              <label>Jurusan</label>
+                                {{form_widget(form.jurusanSma)}}
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <label>Masuk Pada</label>
+                                  {{form_widget(form.masukSma)}}
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <label>Lulus Pada</label>
+                                  {{form_widget(form.lulusSma)}}
+                                </div>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                {% endfor %}
               </div>
               <div class="modal-footer bg-light-blue">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -110,9 +226,7 @@
         </div>
     {{form_end(form)}}
 </div>
-<div id="myModaledit" class="modal fade" role="dialog">
-  
-</div>
+<div id="myModaledit" class="modal fade" role="dialog"></div>
 {% endblock mainall %}
 
 {% block javascripts %}
@@ -161,5 +275,22 @@
           $('#myModaledit').modal('hide');
         });
       });
+    </script>
+    <script>
+      // $('#entitasbundle_fosprofile_namaSma').on('change',function (evt) 
+      // {
+      //     if($('#entitasbundle_fosprofile_namaSma').val().length > 0)
+      //     {
+      //         $('#entitasbundle_fosprofile_jurusanSma').attr("required", "true");
+      //         $('#entitasbundle_fosprofile_masukSma').attr("required", "true");
+      //         $('#entitasbundle_fosprofile_lulusSma').attr("required", "true"); 
+      //     }
+      //     else
+      //     {
+      //         $('#entitasbundle_fosprofile_jurusanSma').removeAttr("required");
+      //         $('#entitasbundle_fosprofile_masukSma').removeAttr("required");
+      //         $('#entitasbundle_fosprofile_lulusSma').removeAttr("required");
+      //     }
+      // });
     </script>
 {% endblock javascripts %}
