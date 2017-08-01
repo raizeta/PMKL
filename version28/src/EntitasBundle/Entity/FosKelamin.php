@@ -3,12 +3,16 @@
 namespace EntitasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use JMS\Serializer\Annotation as JMSSerializer;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Exclude;
 /**
  * FosKelamin
  *
  * @ORM\Table(name="fos_kelamin")
  * @ORM\Entity
+ * @JMSSerializer\ExclusionPolicy("all")
  */
 class FosKelamin
 {
@@ -18,6 +22,7 @@ class FosKelamin
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @JMSSerializer\Exclude
      */
     private $id;
 
@@ -25,6 +30,7 @@ class FosKelamin
      * @var string
      *
      * @ORM\Column(name="nama_kelamin", type="string", length=50, nullable=false)
+     * @JMSSerializer\Expose
      */
     private $namaKelamin;
 

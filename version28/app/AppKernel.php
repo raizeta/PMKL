@@ -25,13 +25,21 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Oneup\FlysystemBundle\OneupFlysystemBundle(),
+            // new Oneup\FlysystemBundle\OneupFlysystemBundle(),
+            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            // new Nelmio\CorsBundle\NelmioCorsBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            
             new UsersBundle\UsersBundle(),
             new LayoutBundle\LayoutBundle(),
             new BackEndBundle\BackEndBundle(),
             new FrontEndBundle\FrontEndBundle(),
             new EntitasBundle\EntitasBundle(),
             new DocBundle\DocBundle(),
+            new ApiBundle\ApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
@@ -40,7 +48,7 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
-
+        
         return $bundles;
     }
 

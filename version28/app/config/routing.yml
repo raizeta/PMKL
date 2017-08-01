@@ -1,6 +1,14 @@
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix: "/doc"
+api:
+    type: rest
+    resource: "routing_api.yml"
+    prefix: /api
+
 doc_bundle:
     resource: "@DocBundle/Resources/config/routing.yml"
-    prefix:   /doc
+    prefix:   /generatedoc
 
 entitas_bundle:
     resource: "@EntitasBundle/Resources/config/routing.yml"
@@ -27,3 +35,6 @@ fos_js_routing:
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+api_login_check:
+    path: /api/login_check

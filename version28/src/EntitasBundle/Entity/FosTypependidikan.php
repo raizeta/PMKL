@@ -3,12 +3,17 @@
 namespace EntitasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMSSerializer;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\SerializerBundle\Annotation\Exclude;
 
 /**
  * FosTypependidikan
  *
  * @ORM\Table(name="fos_typependidikan")
  * @ORM\Entity
+ * @JMSSerializer\ExclusionPolicy("all")
  */
 class FosTypependidikan
 {
@@ -25,6 +30,7 @@ class FosTypependidikan
      * @var string
      *
      * @ORM\Column(name="nama_type", type="string", length=255, nullable=false)
+     * @JMSSerializer\Expose
      */
     private $namaType;
 

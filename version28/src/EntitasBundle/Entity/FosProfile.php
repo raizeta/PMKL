@@ -5,6 +5,11 @@ namespace EntitasBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use JMS\Serializer\Annotation as JMSSerializer;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\SerializerBundle\Annotation\Exclude;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * FosProfile
  *
@@ -12,6 +17,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity
  * @Vich\Uploadable
  * @ORM\Entity(repositoryClass="EntitasBundle\Repositories\FosProfileRepository")
+ * @JMSSerializer\ExclusionPolicy("all")
  */
 class FosProfile
 {
@@ -21,6 +27,7 @@ class FosProfile
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @JMSSerializer\Exclude
      */
     private $id;
 
@@ -28,6 +35,8 @@ class FosProfile
      * @var string
      *
      * @ORM\Column(name="nama_lengkap", type="string", length=255, nullable=false)
+     * @JMSSerializer\Expose
+     * @Assert\NotBlank(message="Please enter a Nama Lengkap")
      */
     private $namaLengkap;
 
@@ -35,6 +44,7 @@ class FosProfile
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     * @JMSSerializer\Expose
      */
     private $slug;
 
@@ -42,6 +52,8 @@ class FosProfile
      * @var string
      *
      * @ORM\Column(name="tempat_lahir", type="string", length=255, nullable=false)
+     * @JMSSerializer\Expose
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $tempatLahir;
 
@@ -49,6 +61,8 @@ class FosProfile
      * @var \DateTime
      *
      * @ORM\Column(name="tanggal_lahir", type="date", nullable=false)
+     * @JMSSerializer\Expose
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $tanggalLahir;
 
@@ -56,6 +70,8 @@ class FosProfile
      * @var string
      *
      * @ORM\Column(name="alamat_sekarang", type="text", length=65535, nullable=false)
+     * @JMSSerializer\Expose
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $alamatSekarang;
 
@@ -63,6 +79,8 @@ class FosProfile
      * @var string
      *
      * @ORM\Column(name="nomor_handphone", type="string", length=255, nullable=false)
+     * @JMSSerializer\Expose
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $nomorHandphone;
 
@@ -70,6 +88,7 @@ class FosProfile
      * @var boolean
      *
      * @ORM\Column(name="status_display", type="boolean", nullable=false, options={"default":true})
+     * @JMSSerializer\Expose
      */
     private $statusDisplay;
 
@@ -77,6 +96,7 @@ class FosProfile
      * @var \DateTime
      *
      * @ORM\Column(name="create_at", type="datetime", nullable=false)
+
      */
     private $createAt;
 
@@ -93,6 +113,7 @@ class FosProfile
      * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName")
      * 
      * @var File
+     * @JMSSerializer\Expose
      */
     private $imageFile;
 
@@ -100,6 +121,7 @@ class FosProfile
      * @var string
      *
      * @ORM\Column(name="image_name", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $imageName;
 
@@ -107,6 +129,7 @@ class FosProfile
      * @var string
      *
      * @ORM\Column(name="nama_sma", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $namaSma;
 
@@ -114,6 +137,7 @@ class FosProfile
      * @var string
      *
      * @ORM\Column(name="jurusan_sma", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $jurusanSma;
 
@@ -121,6 +145,7 @@ class FosProfile
      * @var \DateTime
      *
      * @ORM\Column(name="masuk_sma", type="datetime", nullable=true)
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $masukSma;
 
@@ -128,6 +153,7 @@ class FosProfile
      * @var \DateTime
      *
      * @ORM\Column(name="lulus_sma", type="datetime", nullable=true)
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $lulusSma;
 
@@ -138,6 +164,8 @@ class FosProfile
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="jenis_kelamin", referencedColumnName="id")
      * })
+     * @JMSSerializer\Expose
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $jenisKelamin;
 
@@ -153,6 +181,7 @@ class FosProfile
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="type_anggotas", referencedColumnName="id")
      * })
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $typeAnggotas;
 
@@ -163,6 +192,8 @@ class FosProfile
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="type_pendidikan", referencedColumnName="id")
      * })
+     * @JMSSerializer\Expose
+     * @Assert\NotBlank(message="Please enter a Slug")
      */
     private $typePendidikan;
 

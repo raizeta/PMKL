@@ -10,5 +10,15 @@ namespace EntitasBundle\Repositories;
  */
 class FosProfileRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findAllRest()
+    {
+        $qb = $this->createQueryBuilder('fp');
+        $qb     ->  select('fp','jk','tA','tP')
+        		-> 	innerjoin('fp.jenisKelamin','jk')
+        		-> 	innerjoin('fp.typeAnggotas','tA')
+        		-> 	innerjoin('fp.typePendidikan','tP')
+                ->  OrderBy('fp.id');       
+        return $qb->getQuery()->getArrayResult();       
+    }
 	
 }

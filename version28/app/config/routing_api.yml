@@ -1,0 +1,11 @@
+# anggotas:
+#     type: rest
+#     host: http://localhost/sym/symfonylib/version28/web/app_dev.php
+#     resource: ApiBundle\Controller\AnggotasController
+
+api_kelamins:
+    type: rest
+    resource: ApiBundle\Controller\JenisKelaminsController
+api_anggotas:
+    type: rest
+    resource: ApiBundle\Controller\AnggotasController

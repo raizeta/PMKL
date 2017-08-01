@@ -1,0 +1,10 @@
+services:
+    acme_api.event.authentication_success_listener:
+        class: UsersBundle\EventListener\AuthenticationSuccessListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+    acme_api.event.authentication_failure_listener:
+        class: UsersBundle\EventListener\AuthenticationFailureListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_failure, method: onAuthenticationFailureResponse }
+    
