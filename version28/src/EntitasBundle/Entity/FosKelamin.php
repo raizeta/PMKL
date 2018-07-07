@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation as JMSSerializer;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\MaxDepth;
 /**
  * FosKelamin
  *
@@ -38,6 +39,7 @@ class FosKelamin
      * @var boolean
      *
      * @ORM\Column(name="status_display", type="boolean", nullable=false, options={"default":true})
+     * @JMSSerializer\Expose
      */
     private $statusDisplay;
 
@@ -45,6 +47,7 @@ class FosKelamin
      * @var \DateTime
      *
      * @ORM\Column(name="create_at", type="datetime", nullable=false)
+     * @JMSSerializer\Expose
      */
     private $createAt;
 
@@ -59,6 +62,7 @@ class FosKelamin
      * @var \DateTime
      *
      * @ORM\Column(name="update_at", type="datetime", nullable=true)
+     * @JMSSerializer\Expose
      */
     private $updateAt;
 
@@ -71,6 +75,8 @@ class FosKelamin
 
     /**
      * @ORM\OneToMany(targetEntity="FosProfile", mappedBy="jenisKelamin")
+     * @JMSSerializer\Expose
+     * @MaxDepth(1) 
      */
     protected $profiles;
 

@@ -38,7 +38,7 @@ class AnggotasController extends FOSRestController implements ClassResourceInter
 {
 
     /**
-     * Gets an individual Blog Post
+     * Gets an individual Anggotas
      *
      * @param int $id
      * @return mixed
@@ -65,7 +65,7 @@ class AnggotasController extends FOSRestController implements ClassResourceInter
     }
 
     /**
-     * Gets a collection of Category
+     * Gets a collection of Anggotas
      *
      * @ApiDoc(
      *     output="EntitasBundle\Entity\FosProfile",
@@ -78,7 +78,7 @@ class AnggotasController extends FOSRestController implements ClassResourceInter
     public function cgetAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository('EntitasBundle:FosProfile')->findAll();
+        $query = $em->getRepository('EntitasBundle:FosProfile')->findAllRest();
         $limit = $request->query->get('limit',2000);
         $page = $request->query->get('page',1);
         $offset = ($page - 1) * $limit;
@@ -90,39 +90,63 @@ class AnggotasController extends FOSRestController implements ClassResourceInter
         return View::create(['Profiles'=>$paginated],Response::HTTP_OK);
     }
 
+    
+    /**
+     * Creates a new note from the submitted data.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   input = "AppBundle\Form\NoteType",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     400 = "Returned when the form has errors"
+     *   }
+     * )
+     *
+     * @Annotations\View(
+     *   template = "AppBundle:Note:newNote.html.twig",
+     *   statusCode = Response::HTTP_BAD_REQUEST
+     * )
+     *
+     * @param Request $request the request object
+     *
+     * @return FormTypeInterface[]|View
+     */
     public function postAction(Request $request)
     {
-        $fosProfile = new Fosprofile();
-        $form = $this->createForm(FosProfileType::class, $fosProfile, ['csrf_protection' => false]);
-
-        $this->processForm($request, $form);
-        if (!$form->isValid()) 
-        {
-            $errors = $this->getErrorsFromForm($form);
-            $data = [
-                'type' => 'validation_error',
-                'title' => 'There was a validation error',
-                'errors' => $errors
-            ];
-            return new JsonResponse($data, 400);
-        }
-    }
-    public function processForm(Request $request, FormInterface $form)
-    {
         $data = json_decode($request->getContent(), true);
-        $clearMissing = $request->getMethod() != 'PATCH';
+
+        $fosProfile     = new Fosprofile();
+        $form           = $this->createForm(FosProfileType::class, $fosProfile, ['csrf_protection' => false]);
+        $clearMissing   = $request->getMethod() != 'PATCH';
         $form->submit($data, $clearMissing);
+
+        // if (!$form->isValid()) 
+        // {
+        //     $errors = $this->getErrorsFromForm($form);
+        //     $data = [
+        //         'type' => 'validation_error',
+        //         'title' => 'There was a validation error',
+        //         'errors' => $errors
+        //     ];
+        //     return new JsonResponse($data, 400);
+        // }
+        return array('$form'=>$form, 400);
     }
 
     private function getErrorsFromForm(FormInterface $form)
     {
         $errors = array();
-        foreach ($form->getErrors() as $error) {
+        foreach ($form->getErrors() as $error) 
+        {
             $errors[] = $error->getMessage();
         }
-        foreach ($form->all() as $childForm) {
-            if ($childForm instanceof FormInterface) {
-                if ($childErrors = $this->getErrorsFromForm($childForm)) {
+        foreach ($form->all() as $childForm) 
+        {
+            if ($childForm instanceof FormInterface) 
+            {
+                if ($childErrors = $this->getErrorsFromForm($childForm)) 
+                {
                     $errors[$childForm->getName()] = $childErrors;
                 }
             }

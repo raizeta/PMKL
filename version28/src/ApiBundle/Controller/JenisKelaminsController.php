@@ -54,7 +54,7 @@ class JenisKelaminsController extends FOSRestController implements ClassResource
         {
             return new View(null, Response::HTTP_NOT_FOUND);
         }  
-        return View::create(array('Brand'=>$query),Response::HTTP_OK);
+        return View::create(array('JenisKelamin'=>$query),Response::HTTP_OK);
     }
 
     /**

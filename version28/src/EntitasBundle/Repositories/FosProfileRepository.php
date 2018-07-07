@@ -13,7 +13,7 @@ class FosProfileRepository extends \Doctrine\ORM\EntityRepository
 	public function findAllRest()
     {
         $qb = $this->createQueryBuilder('fp');
-        $qb     ->  select('fp','jk','tA','tP')
+        $qb     ->  select('fp','partial jk.{id,namaKelamin}','partial tA.{id,namaType}','partial  tP.{id,namaType}')
         		-> 	innerjoin('fp.jenisKelamin','jk')
         		-> 	innerjoin('fp.typeAnggotas','tA')
         		-> 	innerjoin('fp.typePendidikan','tP')

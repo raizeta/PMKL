@@ -43,7 +43,7 @@ class FosProfile
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
      * @JMSSerializer\Expose
      */
     private $slug;
